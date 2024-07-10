@@ -3,6 +3,7 @@ package ru.gen.prtime.entity;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
+import org.springframework.web.bind.annotation.Mapping;
 //import org.aspectj.lang.annotation.Around;
 //import org.hibernate.annotations.Comment;
 
@@ -18,6 +19,8 @@ public class Reception {
     private Integer id;
 
     private Integer idSpecialist;
+
+    private Integer idVisitor;
 
     private LocalDate receptionDate;
 

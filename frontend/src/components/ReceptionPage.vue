@@ -6,6 +6,9 @@
         {{ reception.receptionDate }} - {{ reception.receptionTime }}
       </li>
     </ul>
+    <nav>
+      <router-link to="/createReception">Назначить новый прием</router-link>
+    </nav>
   </div>
 </template>
 

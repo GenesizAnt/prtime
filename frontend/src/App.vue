@@ -1,7 +1,9 @@
 <template>
   <div id="app">
     <nav>
-      <router-link to="/allReception">Все приемы у специалиста</router-link>
+      <router-link to="/">Привет!</router-link>
+      <span> | </span>
+      <router-link to="/receptionPage">Все приемы у специалиста</router-link>
     </nav>
     <router-view></router-view>
   </div>

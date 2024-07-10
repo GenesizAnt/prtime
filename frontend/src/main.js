@@ -3,11 +3,13 @@ import App from './App.vue'
 import { createRouter, createWebHistory } from 'vue-router';
 import WelcomePage from "@/components/WelcomePage";
 import ReceptionPage from "@/components/ReceptionPage";
+import CreateReceptionPage from "@/components/CreateReceptionPage";
 // import AddProductComponent from './components/AddProductComponent.vue';
 
 const routes = [
     { path: '/', component: WelcomePage },
-    { path: '/allReception', component: ReceptionPage }
+    { path: '/receptionPage', component: ReceptionPage },
+    { path: '/createReception', component: CreateReceptionPage}
     // { path: '/add-product', component: AddProductComponent }
 ];
 
