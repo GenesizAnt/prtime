@@ -9,9 +9,6 @@ import java.time.LocalTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ReceptionDTO {
-    private Integer idSpecialist;
-
-    private Integer idVisitor;
 
     private String receptionDate;
 

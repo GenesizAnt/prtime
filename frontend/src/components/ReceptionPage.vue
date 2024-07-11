@@ -1,37 +1,44 @@
 <template>
-  <div>
-    <h2>Приемы специалиста</h2>
-    <ul>
-      <li v-for="reception in receptions" :key="reception.id">
-        {{ reception.receptionDate }} - {{ reception.receptionTime }}
-      </li>
-    </ul>
-    <nav>
-      <router-link to="/createReception">Назначить новый прием</router-link>
-    </nav>
+  <div class="container">
+    <h1 class="text-center mt-5">Прием</h1>
+    <div class="row justify-content-center">
+      <div class="col-md-6">
+        <div class="card mt-5">
+          <div class="card-body">
+            <h5 class="card-title">Дата:</h5>
+            <p class="card-text">{{ receptionDTO.receptionDate }}</p>
+            <h5 class="card-title">Время:</h5>
+            <p class="card-text">{{ receptionDTO.receptionTime }}</p>
+          </div>
+        </div>
+      </div>
+    </div>
   </div>
 </template>
 
 <script>
-import ReceptionAxios from '@/axios/ReceptionAxios';
+import ReceptionAxios from "@/axios/ReceptionAxios";
 
 export default {
   data() {
     return {
-      receptions: [],
+      receptionDTO: {
+        receptionDate: '',
+        receptionTime: ''
+      }
     };
   },
   created() {
-    this.fetchReceptions();
+    this.getReception(this.$route.params.id);
   },
   methods: {
-    fetchReceptions() {
-      ReceptionAxios.getAllReceptions().then(response => {
-        this.receptions = response.data;
+    getReception(receptionId) {
+      ReceptionAxios.getReceptionById(receptionId).then(response => {
+        this.receptionDTO = response.data;
       })
     }
   }
-};
+}
 </script>
 
 <style scoped>

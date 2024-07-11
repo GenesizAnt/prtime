@@ -8,7 +8,7 @@
     </form>
   </div>
   <nav>
-    <router-link to="/receptionPage">все приемы</router-link>
+    <router-link to="/allReceptionPage">все приемы</router-link>
   </nav>
 </template>
 
@@ -19,8 +19,6 @@ export default {
   data() {
     return {
       receptionDTO: {
-        idSpecialist: 1,
-        idVisitor: 1,
         receptionDate: '',
         receptionTime: ''
       }
@@ -30,10 +28,9 @@ export default {
     createReception() {
       ReceptionAxios.createReception(this.receptionDTO).then(() => {
         console.log(this.receptionDTO)
-        this.idSpecialist = 0;
-        this.idVisitor = 0;
         this.receptionDate = '';
         this.receptionTime = '';
+        this.$router.push('/receptionPage');
       });
     }
   }

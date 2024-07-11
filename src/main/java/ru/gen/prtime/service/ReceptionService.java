@@ -11,83 +11,25 @@ import ru.gen.prtime.repository.InMemoryReceptionRepository;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.List;
+import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
 public class ReceptionService {
 
     private final InMemoryReceptionRepository receptionRepository;
+    private final ModelMapper modelMapper;
     public List<Reception> findAllReceptions() {
         return receptionRepository.findAll();
     }
 
     public void save(ReceptionDTO receptionDTO) {
-        Reception reception = new Reception();
-        reception.setIdSpecialist(receptionDTO.getIdSpecialist());
-        reception.setIdVisitor(receptionDTO.getIdVisitor());
-        reception.setReceptionDate(LocalDate.parse(receptionDTO.getReceptionDate()));
-        reception.setReceptionTime(LocalTime.parse(receptionDTO.getReceptionTime()));
-        //TODO сделать из этого класс маппера
-        //TODO отображение времени без секунд
+        Reception reception = modelMapper.map(receptionDTO, Reception.class);
         receptionRepository.save(reception);
     }
+
+    public Optional<Reception> findReception(String receptionId) {
+        //ToDo возвращать оптионал
+        return receptionRepository.findById(receptionId);
+    }
 }
-
-
-//    ModelMapper modelMapper = new ModelMapper();
-//
-//    Converter<String, LocalDate> dateConverter = context -> {
-//        if (context.getSource() == null) {
-//            return null;
-//        }
-//        return LocalDate.parse(context.getSource());
-//    };
-//modelMapper.addConverter(dateConverter);
-//
-//        Converter<String, LocalTime> timeConverter = context -> {
-//        if (context.getSource() == null) {
-//        return null;
-//        }
-//        return LocalTime.parse(context.getSource());
-//        };
-//        modelMapper.addConverter(timeConverter);
-//
-//        Reception reception = modelMapper.map(receptionDTO, Reception.class);
-
-
-
-//    public ReceptionService() {
-//        this.modelMapper = new ModelMapper();
-//        this.modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-//
-//        this.modelMapper.addMappings(new PropertyMap<ReceptionDTO, Reception>(){
-//            @Override
-//            protected void configure() {
-//                map().setReceptionDate(source.getReceptionDate());
-//                map().setReceptionTime(source.getReceptionTime());
-//            }
-//        });
-//    }
-
-
-//    public ReceptionService() {
-//        this.modelMapper = new ModelMapper();
-//        this.modelMapper.addMappings(new PropertyMap<ReceptionDTO, Reception>() {
-//            @Override
-//            protected void configure() {
-//                skip(destination.getId());
-//            }
-//        });
-//    }
-
-
-
-//    public ReceptionService() {
-//        this.modelMapper = new ModelMapper();
-//        this.modelMapper.addMappings(new PropertyMap<ReceptionDTO, Reception>() {
-//            @Override
-//            protected void configure() {
-//                skip(destination.getId());
-//            }
-//        });
-//    }

@@ -5,11 +5,15 @@ const RECEPTION_BASE_URL = host.BASE_URL + "/schedule/receptions";
 
 class ReceptionAxios {
     getAllReceptions() {
-        return axios.get(RECEPTION_BASE_URL);
+        return axios.get(RECEPTION_BASE_URL + '/list');
     }
 
     createReception(receptionDTO) {
-        return axios.post(RECEPTION_BASE_URL, receptionDTO);
+        return axios.post(RECEPTION_BASE_URL + '/create', receptionDTO);
+    }
+
+    getReceptionById(receptionId) {
+        return axios.get(`${RECEPTION_BASE_URL}/${receptionId}`)
     }
 }
 

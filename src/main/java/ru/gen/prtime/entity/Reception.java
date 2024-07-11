@@ -18,10 +18,6 @@ public class Reception {
 
     private Integer id;
 
-    private Integer idSpecialist;
-
-    private Integer idVisitor;
-
     private LocalDate receptionDate;
 
     private LocalTime receptionTime;

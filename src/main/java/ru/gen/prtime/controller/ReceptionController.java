@@ -16,13 +16,18 @@ public class ReceptionController {
 
     private final ReceptionService receptionService;
 
-    @GetMapping
+    @GetMapping("/list")
     public List<Reception> getReceptionList() {
         return receptionService.findAllReceptions();
     }
 
-    @PostMapping()
+    @PostMapping("/create")
     public void createReception(@RequestBody ReceptionDTO receptionDTO) {
         receptionService.save(receptionDTO);
+    }
+
+    @GetMapping("{receptionId:\\d+}")
+    public Reception getReception(@PathVariable("receptionId") String receptionId) {
+        return receptionService.findReception(receptionId).orElseThrow();
     }
 }

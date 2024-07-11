@@ -3,7 +3,7 @@
     <nav>
       <router-link to="/">Привет!</router-link>
       <span> | </span>
-      <router-link to="/receptionPage">Все приемы у специалиста</router-link>
+      <router-link to="/allReceptionPage">Все приемы у специалиста</router-link>
     </nav>
     <router-view></router-view>
   </div>
