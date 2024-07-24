@@ -19,8 +19,8 @@ export default {
   data() {
     return {
       receptionDTO: {
-        receptionDate: '',
-        receptionTime: ''
+        receptionDate: new Date().toLocaleDateString(),
+        receptionTime: new Date().toTimeString()
       }
     };
   },
@@ -30,7 +30,7 @@ export default {
         console.log(this.receptionDTO)
         this.receptionDate = '';
         this.receptionTime = '';
-        this.$router.push('/receptionPage');
+        this.$router.push('/allReceptionPage');
       });
     }
   }

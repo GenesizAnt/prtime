@@ -10,7 +10,7 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class ReceptionDTO {
 
-    private String receptionDate;
+    private LocalDate receptionDate;
 
-    private String receptionTime;
+    private LocalTime receptionTime;
 }
