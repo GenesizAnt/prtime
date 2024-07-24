@@ -5,8 +5,6 @@ import ReceptionPage from "@/components/ReceptionPage";
 import CreateReceptionPage from "@/components/CreateReceptionPage";
 import NotFound from "@/components/NotFound";
 
-//ToDO сделать роутер отдельным классом
-
 const routes = [
     { path: '/', component: WelcomePage },
     { path: '/allReceptionPage', component: AllReceptionPage },

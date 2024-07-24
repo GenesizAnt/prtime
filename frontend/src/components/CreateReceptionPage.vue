@@ -19,8 +19,8 @@ export default {
   data() {
     return {
       receptionDTO: {
-        receptionDate: new Date().toLocaleDateString(),
-        receptionTime: new Date().toTimeString()
+        receptionDate: null,
+        receptionTime: null
       }
     };
   },
@@ -28,8 +28,8 @@ export default {
     createReception() {
       ReceptionAxios.createReception(this.receptionDTO).then(() => {
         console.log(this.receptionDTO)
-        this.receptionDate = '';
-        this.receptionTime = '';
+        this.receptionDate = null;
+        this.receptionTime = null;
         this.$router.push('/allReceptionPage');
       });
     }

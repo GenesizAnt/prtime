@@ -23,8 +23,8 @@ export default {
   data() {
     return {
       receptionDTO: {
-        receptionDate: new Date().toLocaleDateString(),
-        receptionTime: new Date().toTimeString()
+        receptionDate: null,
+        receptionTime: null
       }
     };
   },
