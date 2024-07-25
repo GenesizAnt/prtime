@@ -8,6 +8,7 @@ import ru.gen.prtime.entity.Reception;
 import ru.gen.prtime.repository.InMemoryReceptionRepository;
 
 import java.util.List;
+import java.util.NoSuchElementException;
 import java.util.Optional;
 
 @Service
@@ -16,6 +17,7 @@ public class ReceptionService {
 
     private final InMemoryReceptionRepository receptionRepository;
     private final ModelMapper modelMapper;
+
     public List<Reception> findAllReceptions() {
         return receptionRepository.findAll();
     }
@@ -30,10 +32,16 @@ public class ReceptionService {
     }
 
     public void editReception(ReceptionDTO editReception) {
-        Reception reception = receptionRepository.findById(editReception.getId()).orElseThrow();
-        receptionRepository.remove(reception);
-        reception.setReceptionDate(editReception.getReceptionDate());
-        reception.setReceptionTime(editReception.getReceptionTime());
-        receptionRepository.save(reception);
+        receptionRepository.findById(editReception.getId())
+                .ifPresentOrElse(reception -> {
+                    reception.setReceptionDate(editReception.getReceptionDate());
+                    reception.setReceptionTime(editReception.getReceptionTime());
+                }, () -> {
+                    throw new NoSuchElementException();
+                });
+    }
+
+    public void removeReception(Integer receptionId) {
+        receptionRepository.remove(receptionId);
     }
 }

@@ -19,6 +19,10 @@ class ReceptionAxios {
     editReception(editingReception) {
         return axios.patch(RECEPTION_BASE_URL + '/edit', editingReception)
     }
+
+    removeReception(receptionId) {
+        return axios.delete(`${RECEPTION_BASE_URL}/${receptionId}`)
+    }
 }
 
 export default new ReceptionAxios();

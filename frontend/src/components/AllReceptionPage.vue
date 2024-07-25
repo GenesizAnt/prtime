@@ -1,11 +1,13 @@
 <template>
   <div>
+    <app-alert :alert="alert" @close="alert = null"></app-alert>
     <h2>Приемы специалиста &larr;</h2>
     <ul>
       <li v-for="reception in receptions" :key="reception.id">
         {{ reception.receptionDate }} - {{ reception.receptionTime }} - {{ reception.id }}
         <button @click="getReceptionPage(reception.id)">Карточка приема</button>
         <button @click="openEditForm(reception)">Изменить встречу</button>
+        <button @click="removeReception(reception.id)">Удалить встречу</button>
       </li>
     </ul>
     <div v-if="editingReception">
@@ -25,12 +27,14 @@
 
 <script>
 import ReceptionAxios from '@/axios/ReceptionAxios';
+import AppAlert from "@/components/AppAlert";
 
 export default {
   data() {
     return {
       receptions: [],
-      editingReception: null
+      editingReception: null,
+      alert: null
     };
   },
   created() {
@@ -56,8 +60,20 @@ export default {
         this.fetchReceptions();
         this.editingReception = null;
       })
+    },
+    removeReception(receptionId) {
+      ReceptionAxios.removeReception(receptionId).then(() => {
+        this.fetchReceptions();
+      }).catch(e => {
+        this.alert = {
+          type: 'danger',
+          title: 'Ошибка!',
+          text: e.message
+        };
+      });
     }
-  }
+  },
+  components: {AppAlert}
 };
 </script>
 

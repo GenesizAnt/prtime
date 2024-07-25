@@ -32,9 +32,9 @@ public class InMemoryReceptionRepository {
                 .findFirst();
     }
 
-    public void remove(Reception removeReception) {
+    public void remove(Integer receptionId) {
         receptions = receptions.stream()
-                .filter(reception -> !Objects.equals(removeReception.getId(), reception.getId()))
+                .filter(reception -> !Objects.equals(receptionId, reception.getId()))
                 .collect(Collectors.toList());
     }
 }
