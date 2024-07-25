@@ -25,7 +25,15 @@ public class ReceptionService {
         receptionRepository.save(reception);
     }
 
-    public Optional<Reception> findReception(String receptionId) {
+    public Optional<Reception> findReception(Integer receptionId) {
         return receptionRepository.findById(receptionId);
+    }
+
+    public void editReception(ReceptionDTO editReception) {
+        Reception reception = receptionRepository.findById(editReception.getId()).orElseThrow();
+        receptionRepository.remove(reception);
+        reception.setReceptionDate(editReception.getReceptionDate());
+        reception.setReceptionTime(editReception.getReceptionTime());
+        receptionRepository.save(reception);
     }
 }

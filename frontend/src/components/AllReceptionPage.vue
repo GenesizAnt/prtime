@@ -8,24 +8,14 @@
         <button @click="openEditForm(reception)">Изменить встречу</button>
       </li>
     </ul>
-    <div v-if="editingReceptions">
-
-
-
-
-      //Todo добавить в ДТО id + проверить будет ли работать ДТО для создания встречи + сделать форму отправки данных
-
-
-
-
+    <div v-if="editingReception">
       <form @submit.prevent="editReception">
-        <p>Hello</p>
-        <p>{{ editingReceptions.id }}</p>
-        <p>{{ editingReceptions.receptionDate }}</p>
-        <p>{{ editingReceptions.receptionTime }}</p>
+        <p>Изменить встречу</p>
+        <input type="hidden" v-model="editingReception.id"/>
+        <input v-model="editingReception.receptionDate" type="date" placeholder="Дата встречи">
+        <input v-model="editingReception.receptionTime" type="time" placeholder="Время встречи"/>
         <button type="submit">Update</button>
       </form>
-
     </div>
     <nav>
       <router-link to="/createReception">Назначить новый прием</router-link>
@@ -40,7 +30,7 @@ export default {
   data() {
     return {
       receptions: [],
-      editingReceptions: null
+      editingReception: null
     };
   },
   created() {
@@ -59,11 +49,13 @@ export default {
       });
     },
     openEditForm(reception) {
-      this.editingReceptions = reception;
+      this.editingReception = { ...reception };
     },
     editReception() {
-      console.log(42)
-      this.editingReceptions = null;
+      ReceptionAxios.editReception(this.editingReception).then(() => {
+        this.fetchReceptions();
+        this.editingReception = null;
+      })
     }
   }
 };

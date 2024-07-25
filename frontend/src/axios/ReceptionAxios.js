@@ -15,6 +15,10 @@ class ReceptionAxios {
     getReceptionById(receptionId) {
         return axios.get(`${RECEPTION_BASE_URL}/${receptionId}`)
     }
+
+    editReception(editingReception) {
+        return axios.patch(RECEPTION_BASE_URL + '/edit', editingReception)
+    }
 }
 
 export default new ReceptionAxios();

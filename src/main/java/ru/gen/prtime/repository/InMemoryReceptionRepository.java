@@ -6,12 +6,13 @@ import ru.gen.prtime.entity.Reception;
 import java.time.LocalDate;
 import java.time.LocalTime;
 import java.util.*;
+import java.util.stream.Collectors;
 import java.util.stream.IntStream;
 
 @Repository
 public class InMemoryReceptionRepository {
 
-    private final List<Reception> receptions = Collections.synchronizedList(new LinkedList<>());
+    private List<Reception> receptions = Collections.synchronizedList(new LinkedList<>());
 
     public InMemoryReceptionRepository() {
         IntStream.range(1, 4).forEach(i -> this.receptions.add(new Reception(i, LocalDate.now(), LocalTime.now())));
@@ -25,9 +26,15 @@ public class InMemoryReceptionRepository {
         receptions.add(reception);
     }
 
-    public Optional<Reception> findById(String receptionId) {
+    public Optional<Reception> findById(Integer receptionId) {
         return receptions.stream()
-                .filter(reception -> Objects.equals(Integer.parseInt(receptionId), reception.getId()))
+                .filter(reception -> Objects.equals(receptionId, reception.getId()))
                 .findFirst();
+    }
+
+    public void remove(Reception removeReception) {
+        receptions = receptions.stream()
+                .filter(reception -> !Objects.equals(removeReception.getId(), reception.getId()))
+                .collect(Collectors.toList());
     }
 }

@@ -27,7 +27,12 @@ public class ReceptionController {
     }
 
     @GetMapping("{receptionId:\\d+}")
-    public Reception getReception(@PathVariable("receptionId") String receptionId) {
+    public Reception getReception(@PathVariable("receptionId") Integer receptionId) {
         return receptionService.findReception(receptionId).orElseThrow();
+    }
+
+    @PatchMapping("/edit")
+    public void editReception(@RequestBody ReceptionDTO editReception) {
+        receptionService.editReception(editReception);
     }
 }

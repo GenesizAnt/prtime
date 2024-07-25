@@ -10,6 +10,8 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class ReceptionDTO {
 
+    private Integer id;
+
     private LocalDate receptionDate;
 
     private LocalTime receptionTime;
