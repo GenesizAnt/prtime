@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const host = require('../axios/host.js');
-const RECEPTION_BASE_URL = host.BASE_URL + "/schedule/receptions";
+const RECEPTION_BASE_URL = host.BASE_URL + "/receptions";
 
 class ReceptionAxios {
     getAllReceptions() {
@@ -16,8 +16,8 @@ class ReceptionAxios {
         return axios.get(`${RECEPTION_BASE_URL}/${receptionId}`)
     }
 
-    editReception(editingReception) {
-        return axios.patch(RECEPTION_BASE_URL + '/edit', editingReception)
+    editReception(receptionId, editingReception) {
+        return axios.patch(`${RECEPTION_BASE_URL}/${receptionId}`, editingReception)
     }
 
     removeReception(receptionId) {

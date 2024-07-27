@@ -36,8 +36,8 @@ export default {
       }).catch(e => {
         this.alert = {
           type: 'danger',
-          title: 'Ошибка!',
-          text: e.response.data
+          title: e.response.data.detail,
+          text: e.response.data.errors
         };
       });
     }

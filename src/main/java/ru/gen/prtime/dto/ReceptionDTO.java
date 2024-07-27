@@ -13,8 +13,6 @@ import java.time.LocalTime;
 @AllArgsConstructor
 public class ReceptionDTO {
 
-    private Integer id;
-
     @NotNull(message = "Дата приема не может быть пустой")
     private LocalDate receptionDate;
 

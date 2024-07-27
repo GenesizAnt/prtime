@@ -22,17 +22,17 @@ public class ReceptionService {
         return receptionRepository.findAll();
     }
 
-    public void save(ReceptionDTO receptionDTO) {
+    public Reception save(ReceptionDTO receptionDTO) {
         Reception reception = modelMapper.map(receptionDTO, Reception.class);
-        receptionRepository.save(reception);
+        return receptionRepository.save(reception);
     }
 
     public Optional<Reception> findReception(Integer receptionId) {
         return receptionRepository.findById(receptionId);
     }
 
-    public void editReception(ReceptionDTO editReception) {
-        receptionRepository.findById(editReception.getId())
+    public void editReception(Integer receptionId, ReceptionDTO editReception) {
+        receptionRepository.findById(receptionId)
                 .ifPresentOrElse(reception -> {
                     reception.setReceptionDate(editReception.getReceptionDate());
                     reception.setReceptionTime(editReception.getReceptionTime());

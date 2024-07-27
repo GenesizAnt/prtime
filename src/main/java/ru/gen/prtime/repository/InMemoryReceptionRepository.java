@@ -22,8 +22,9 @@ public class InMemoryReceptionRepository {
         return Collections.unmodifiableList(this.receptions);
     }
 
-    public void save(Reception reception) {
+    public Reception save(Reception reception) {
         receptions.add(reception);
+        return reception;
     }
 
     public Optional<Reception> findById(Integer receptionId) {

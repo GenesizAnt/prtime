@@ -56,7 +56,7 @@ export default {
       this.editingReception = { ...reception };
     },
     editReception() {
-      ReceptionAxios.editReception(this.editingReception).then(() => {
+      ReceptionAxios.editReception(this.editingReception.id, this.editingReception).then(() => {
         this.fetchReceptions();
         this.editingReception = null;
       })
