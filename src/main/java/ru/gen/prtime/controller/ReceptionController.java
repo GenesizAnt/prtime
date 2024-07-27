@@ -2,16 +2,22 @@ package ru.gen.prtime.controller;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
+import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.BindingResult;
+import org.springframework.validation.FieldError;
 import org.springframework.validation.ObjectError;
+import org.springframework.web.bind.MethodArgumentNotValidException;
 import org.springframework.web.bind.annotation.*;
+import org.springframework.web.context.request.WebRequest;
 import ru.gen.prtime.entity.Reception;
 import ru.gen.prtime.dto.ReceptionDTO;
 import ru.gen.prtime.service.ReceptionService;
 
+import java.util.HashMap;
 import java.util.List;
+import java.util.Map;
 import java.util.NoSuchElementException;
 import java.util.stream.Collectors;
 import java.util.stream.Stream;
@@ -30,26 +36,8 @@ public class ReceptionController {
     }
 
     @PostMapping("/create")
-    public ResponseEntity<Stream<String>> createReception(@RequestBody @Valid ReceptionDTO receptionDTO, BindingResult bindingResult) {
-        if (bindingResult.hasErrors()) {
-            System.out.println(bindingResult);
-            List<String> list = bindingResult.getAllErrors()
-                    .stream()
-                    .map(objectError -> "Ваше сообщение об ошибке: " + objectError.getDefaultMessage()).toList();
-            Stream<String> stream = list.stream();
-
-            return new ResponseEntity<>(Stream.generate(() -> "А какого хрена?"),
-                    HttpStatus.NOT_FOUND);
-
-
-//            return new ResponseEntity<>(
-//                    bindingResult.getAllErrors()
-//                            .stream()
-//                            .map(ObjectError::getDefaultMessage), HttpStatus.NOT_FOUND);
-        } else {
-            receptionService.save(receptionDTO);
-            return new ResponseEntity<>(HttpStatus.OK);
-        }
+    public void createReception(@RequestBody @Valid ReceptionDTO receptionDTO) {
+        receptionService.save(receptionDTO);
     }
 
     @GetMapping("{receptionId:\\d+}")
@@ -71,33 +59,15 @@ public class ReceptionController {
     public ResponseEntity<NoSuchElementException> handleNoSuchElementException(NoSuchElementException exception) {
         return new ResponseEntity<>(exception, HttpStatus.NOT_FOUND);
     }
-}
 
-class AppError {
-    private int statusCode;
-    private String message;
-
-    public int getStatusCode() {
-        return statusCode;
-    }
-
-    public void setStatusCode(int statusCode) {
-        this.statusCode = statusCode;
-    }
-
-    public String getMessage() {
-        return message;
-    }
-
-    public void setMessage(String message) {
-        this.message = message;
-    }
-
-    public AppError() {
-    }
-
-    public AppError(int statusCode, String message) {
-        this.statusCode = statusCode;
-        this.message = message;
+    @ExceptionHandler(MethodArgumentNotValidException.class)
+    public ResponseEntity<Map<String, String>> handleValidationExceptions(MethodArgumentNotValidException ex) {
+        Map<String, String> errors = new HashMap<>();
+        ex.getBindingResult().getAllErrors().forEach((error) -> {
+            String fieldName = ((FieldError) error).getField();
+            String errorMessage = error.getDefaultMessage();
+            errors.put(fieldName, errorMessage);
+        });
+        return new ResponseEntity<>(errors, HttpStatus.BAD_REQUEST);
     }
 }

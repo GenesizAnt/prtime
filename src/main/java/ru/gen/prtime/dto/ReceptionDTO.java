@@ -1,5 +1,6 @@
 package ru.gen.prtime.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.*;
@@ -14,10 +15,9 @@ public class ReceptionDTO {
 
     private Integer id;
 
-    @Size(min = 10, max = 10)
+    @NotNull(message = "Дата приема не может быть пустой")
     private LocalDate receptionDate;
 
-    @Size(min = 5, max = 5)
-    @NotNull
+    @NotNull(message = "Время приема не может быть пустым")
     private LocalTime receptionTime;
 }
