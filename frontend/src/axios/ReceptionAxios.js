@@ -5,11 +5,11 @@ const RECEPTION_BASE_URL = host.BASE_URL + "/receptions";
 
 class ReceptionAxios {
     getAllReceptions() {
-        return axios.get(RECEPTION_BASE_URL + '/list');
+        return axios.get(RECEPTION_BASE_URL);
     }
 
     createReception(receptionDTO) {
-        return axios.post(RECEPTION_BASE_URL + '/create', receptionDTO);
+        return axios.post(RECEPTION_BASE_URL, receptionDTO);
     }
 
     getReceptionById(receptionId) {

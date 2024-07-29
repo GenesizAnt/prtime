@@ -20,6 +20,12 @@
 import ReceptionAxios from "@/axios/ReceptionAxios";
 
 export default {
+  props: {
+    id: {
+      type: String,
+      required: true
+    }
+  },
   data() {
     return {
       receptionDTO: {
@@ -29,7 +35,7 @@ export default {
     };
   },
   created() {
-    this.getReception(this.$route.params.id);
+    this.getReception(this.id);
   },
   methods: {
     getReception(receptionId) {

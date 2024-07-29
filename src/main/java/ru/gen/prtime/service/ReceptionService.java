@@ -41,7 +41,7 @@ public class ReceptionService {
                 });
     }
 
-    public void removeReception(Integer receptionId) {
+    public void deleteReception(Integer receptionId) {
         receptionRepository.remove(receptionId);
     }
 }

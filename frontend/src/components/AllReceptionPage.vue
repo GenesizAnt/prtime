@@ -48,12 +48,17 @@ export default {
     },
     getReceptionPage(receptionId) {
       this.$router.push({
-        name: 'ReceptionPage',
+        name: 'reception',
         params: {id: receptionId}
       });
     },
     openEditForm(reception) {
-      this.editingReception = { ...reception };
+      if (this.editingReception === null) {
+        this.editingReception = {...reception};
+      } else {
+        this.editingReception = null;
+      }
+
     },
     editReception() {
       ReceptionAxios.editReception(this.editingReception.id, this.editingReception).then(() => {
