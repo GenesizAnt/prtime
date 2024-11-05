@@ -5,7 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import ru.gen.prtime.dto.ReceptionDTO;
 import ru.gen.prtime.entity.Reception;
-import ru.gen.prtime.repository.InMemoryReceptionRepository;
+import ru.gen.prtime.repository.ReceptionRepository;
 
 import java.util.List;
 import java.util.NoSuchElementException;
@@ -15,7 +15,8 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ReceptionService {
 
-    private final InMemoryReceptionRepository receptionRepository;
+//    private final InMemoryReceptionRepository receptionRepository;
+    private  final ReceptionRepository receptionRepository;
     private final ModelMapper modelMapper;
 
     public List<Reception> findAllReceptions() {
@@ -42,6 +43,6 @@ public class ReceptionService {
     }
 
     public void deleteReception(Integer receptionId) {
-        receptionRepository.remove(receptionId);
+        receptionRepository.deleteById(receptionId);
     }
 }
