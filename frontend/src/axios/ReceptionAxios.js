@@ -8,6 +8,10 @@ class ReceptionAxios {
         return axios.get(RECEPTION_BASE_URL);
     }
 
+    getAllReceptionsFilter(filter) {
+        return axios.get(RECEPTION_BASE_URL, { params: { filter: filter } });
+    }
+
     createReception(receptionDTO) {
         return axios.post(RECEPTION_BASE_URL, receptionDTO);
     }

@@ -26,11 +26,9 @@ public class Reception {
     private Integer id;
 
     @Column(name = "reception_date")
-    @NotNull
     private LocalDate receptionDate;
 
-    @Column(name = "receprion_time")
-    @NotNull
+    @Column(name = "reception_time")
     private LocalTime receptionTime;
 
 }

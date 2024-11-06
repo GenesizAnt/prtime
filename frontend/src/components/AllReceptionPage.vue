@@ -45,6 +45,10 @@ export default {
       ReceptionAxios.getAllReceptions().then(response => {
         this.receptions = response.data;
       })
+      //пример запроса на один контролер getAllReception, при этом можно добавить фильтр
+      // ReceptionAxios.getAllReceptionsFilter("333333").then(response => {
+      //   this.receptions = response.data;
+      // })
     },
     getReceptionPage(receptionId) {
       this.$router.push({

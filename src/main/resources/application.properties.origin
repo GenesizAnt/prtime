@@ -4,6 +4,12 @@ spring.datasource.url=
 spring.datasource.username=
 spring.datasource.password=
 
-spring.jpa.properties.hibernate.dialect=
+spring.flyway.schemas=
+spring.flyway.enabled=
+spring.flyway.locations=
+spring.flyway.baseline-on-migrate=
 
 cors.frontend=
+
+spring.jpa.open-in-view=
+spring.thymeleaf.check-template-location=

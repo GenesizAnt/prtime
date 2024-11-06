@@ -21,8 +21,8 @@ public class ReceptionsController {
     private final ReceptionService receptionService;
 
     @GetMapping
-    public List<Reception> getAllReception() {
-        return receptionService.findAllReceptions();
+    public List<Reception> getAllReception(@RequestParam(name = "filter", required = false) String filter) {
+        return receptionService.findAllReceptions(filter);
     }
 
     @PostMapping
