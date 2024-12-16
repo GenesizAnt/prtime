@@ -17,8 +17,7 @@ import java.util.Optional;
 @RequiredArgsConstructor
 public class ReceptionService {
 
-//    private final InMemoryReceptionRepository receptionRepository;
-    private  final ReceptionRepository receptionRepository;
+    private final ReceptionRepository receptionRepository;
     private final ModelMapper modelMapper;
 
     public List<Reception> findAllReceptions(String filter) {
