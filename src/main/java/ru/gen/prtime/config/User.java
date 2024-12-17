@@ -1,4 +1,4 @@
-package ru.gen.prtime.config;
-
-public class User {
-}
+//package ru.gen.prtime.config;
+//
+//public class User {
+//}
