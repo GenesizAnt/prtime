@@ -12,6 +12,7 @@ import ru.gen.prtime.entity.Reception;
 import ru.gen.prtime.dto.ReceptionDTO;
 import ru.gen.prtime.service.ReceptionService;
 
+import java.security.Principal;
 import java.util.*;
 
 @CrossOrigin(origins = "${cors.frontend}")
@@ -26,7 +27,8 @@ public class ReceptionController {
     //ToDo НЕЛЬЗЯ!!!!!!!!!!!!!!!!! ПЕРЕДАВАТЬ ВО ВЬЮ ИЗНАЧАЛЬНЫЙ ОБЪЕКТ ИЗ БАЗЫ!!!!!!!!!!!!!!!! ТОЛЬКО ДТО
 
     @ModelAttribute("reception")
-    public Reception getReception(@PathVariable("receptionId") int receptionId) {
+    public Reception getReception(@PathVariable("receptionId") int receptionId, Principal principal) {
+        System.out.println(principal);
         return receptionService.findReception(receptionId)
                 .orElseThrow(() -> new NoSuchElementException("errors.reception.not_found"));
     }

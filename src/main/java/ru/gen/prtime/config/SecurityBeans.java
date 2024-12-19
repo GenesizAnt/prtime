@@ -18,7 +18,7 @@ public class SecurityBeans {
     public SecurityFilterChain securityFilterChain(HttpSecurity http) throws Exception {
         return http
                 .authorizeHttpRequests(authorizeHttpRequest ->
-                        authorizeHttpRequest.requestMatchers("/receptions/**") // кто имеет доступ
+                        authorizeHttpRequest.requestMatchers("/receptions/**")
                                 .hasRole("CLIENT"))
                 .httpBasic(Customizer.withDefaults())
                 .sessionManagement(session -> session
