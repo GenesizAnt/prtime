@@ -45,4 +45,14 @@ const router = createRouter({
     routes
 });
 
+// Добавляем навигационный guard для проверки аутентификации
+router.beforeEach((to, from, next) => {
+    const isAuthenticated = localStorage.getItem("jwtToken"); // Проверяем наличие токена
+    if (to.meta.requiresAuth && !isAuthenticated) {
+        next("/receptions/api/auth/login"); // Перенаправляем на страницу входа, если пользователь не авторизован
+    } else {
+        next(); // Продолжаем навигацию
+    }
+});
+
 export default router

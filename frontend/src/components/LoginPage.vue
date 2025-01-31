@@ -1,19 +1,20 @@
 <template>
-  <form @submit.prevent="login">
-    <input v-model="username" placeholder="Username" />
-    <input v-model="password" type="password" placeholder="Password" />
-    <button type="submit">Login</button>
-  </form>
+  <div>
+    <input type="text" v-model="user.username" placeholder="Username" />
+    <input type="password" v-model="user.password" placeholder="Password" />
+    <button @click="login">Login</button>
+  </div>
 </template>
 
 <script>
-import axios from 'axios';
-
+import axios from "axios";
 export default {
   data() {
     return {
-      username: '',
-      password: '',
+      user: {
+        username: "",
+        password: "",
+      },
     };
   },
   methods: {
@@ -28,6 +29,11 @@ export default {
         localStorage.setItem('token', response.data); // Сохраняем токен в localStorage
         this.$router.push('/'); // Перенаправляем на главную страницу
       } catch (error) {
+        if (error.code === 'ERR_NETWORK') {
+          console.error('Network error:', error.message);
+        } else {
+          console.error('Error:', error.message);
+        }
         console.error('Login failed', error);
         alert('Login failed. Please check your credentials.'); // Показываем сообщение об ошибке
       }
