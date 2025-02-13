@@ -9,8 +9,11 @@
 <script>
 import axios from "axios";
 export default {
+  name: 'LoginPage',
   data() {
     return {
+      result: {},
+      alertMessage: 'Request error',
       user: {
         username: "",
         password: "",
@@ -41,3 +44,7 @@ export default {
   },
 };
 </script>
+
+<style scoped>
+/* Стили */
+</style>

@@ -13,3 +13,6 @@ cors.frontend=
 
 spring.jpa.open-in-view=
 spring.thymeleaf.check-template-location=
+
+jwt.secret=
+jwt.lifetime=

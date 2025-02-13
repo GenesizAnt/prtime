@@ -5,6 +5,10 @@ import ReceptionPage from "@/components/ReceptionPage";
 import CreateReceptionPage from "@/components/CreateReceptionPage";
 import NotFound from "@/components/NotFound";
 import LoginPage from "@/components/LoginPage.vue";
+import AdminPage from "@/components/AdminPage.vue";
+import HomePage from "@/components/HomePage.vue";
+import LoginPage from "@/components/LoginPage.vue";
+import RegisterPage from "@/components/RegisterPage.vue";
 
 const routes = [
     {
@@ -13,9 +17,24 @@ const routes = [
         component: WelcomePage
     },
     {
-        path: '/api/auth/login',
-        name: 'login',
+        path: '/login',
+        name: 'LoginPage',
         component: LoginPage
+    },
+    {
+        path: '/register',
+        name: 'RegisterPage',
+        component: RegisterPage
+    },
+    {
+        path: '/admin',
+        name: 'AdminPage',
+        component: AdminPage
+    },
+    {
+        path: '/home',
+        name: 'HomePage',
+        component: HomePage
     },
     {
         path: '/allReceptionPage',
