@@ -1,4 +1,4 @@
-package ru.gen.prtime.config;
+package ru.gen.prtime.userAccessManagement.application;
 
 import io.jsonwebtoken.ExpiredJwtException;
 import io.jsonwebtoken.security.SignatureException;
@@ -13,7 +13,6 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Component;
 import org.springframework.web.filter.OncePerRequestFilter;
-import ru.gen.prtime.utils.JwtTokenUtils;
 
 import java.io.IOException;
 import java.util.stream.Collectors;

@@ -1,4 +1,4 @@
-package ru.gen.prtime.service;
+package ru.gen.prtime.userAccessManagement.application.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -10,7 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gen.prtime.dto.RegistrationUserDto;
 import ru.gen.prtime.entity.User;
-import ru.gen.prtime.repository.UserRepository;
+import ru.gen.prtime.userAccessManagement.infrastructure.persistence.UserRepository;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,4 +1,4 @@
-package ru.gen.prtime.config;
+package ru.gen.prtime.userAccessManagement.application;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,14 +10,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import ru.gen.prtime.dto.JwtRequest;
-import ru.gen.prtime.dto.JwtResponse;
+import ru.gen.prtime.userAccessManagement.application.dto.JwtRequest;
+import ru.gen.prtime.userAccessManagement.application.dto.JwtResponse;
 import ru.gen.prtime.dto.RegistrationUserDto;
-import ru.gen.prtime.dto.UserDto;
+import ru.gen.prtime.userAccessManagement.application.dto.UserDto;
 import ru.gen.prtime.entity.User;
 import ru.gen.prtime.exeption.AppError;
-import ru.gen.prtime.service.UserService;
-import ru.gen.prtime.utils.JwtTokenUtils;
+import ru.gen.prtime.userAccessManagement.application.services.UserService;
 
 import java.util.Collection;
 

@@ -1,4 +1,4 @@
-package ru.gen.prtime.repository;
+package ru.gen.prtime.userAccessManagement.infrastructure.persistence;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
