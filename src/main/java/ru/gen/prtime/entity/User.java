@@ -2,8 +2,11 @@ package ru.gen.prtime.entity;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import ru.gen.prtime.scheduleManagement.domain.model.TimeSlot;
+import ru.gen.prtime.scheduleManagement.domain.valueobjects.UserFullName;
 
 import java.util.Collection;
+import java.util.List;
 
 @Entity
 @Data
@@ -20,8 +23,19 @@ public class User {
     @Column(name = "password")
     private String password;
 
+    //VO - Email
     @Column(name = "email")
     private String email;
+    //
+
+    @Embedded
+    private UserFullName userFullName;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<TimeSlot> clientTimeSlots;
+
+    @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
+    private List<TimeSlot> specialistTimeSlots;
 
     @ManyToMany
     @JoinTable(

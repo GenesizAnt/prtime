@@ -10,6 +10,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gen.prtime.dto.RegistrationUserDto;
 import ru.gen.prtime.entity.User;
+import ru.gen.prtime.scheduleManagement.domain.valueobjects.UserFullName;
 import ru.gen.prtime.userAccessManagement.infrastructure.persistence.UserRepository;
 
 import java.util.List;
@@ -31,6 +32,11 @@ public class UserService implements UserDetailsService {
     @Override
     @Transactional
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
+        User us = new User();
+        UserFullName s = new UserFullName();
+        s.setFormattedDate("s");
+        us.getUserFullName();
+
         User user = findByUsername(username).orElseThrow(() -> new UsernameNotFoundException(
                 String.format("Userrrr '%s' not found", username)
         ));
