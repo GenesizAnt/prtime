@@ -1,4 +1,4 @@
-package ru.gen.prtime.entity;
+package ru.gen.prtime.userAccessManagement.security.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;

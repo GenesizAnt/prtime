@@ -1,9 +1,8 @@
-package ru.gen.prtime.entity;
+package ru.gen.prtime.userAccessManagement.security.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import ru.gen.prtime.scheduleManagement.domain.model.TimeSlot;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.UserFullName;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 
 import java.util.Collection;
 import java.util.List;
@@ -28,8 +27,19 @@ public class User {
     private String email;
     //
 
-    @Embedded
-    private UserFullName userFullName;
+//    @Embedded
+//    private UserFullName userFullName;
+
+    //VO - UserFullName
+    @Column(name = "firstname")
+    private String firstname;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "patronymic")
+    private String patronymic;
+    //
 
     @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
     private List<TimeSlot> clientTimeSlots;

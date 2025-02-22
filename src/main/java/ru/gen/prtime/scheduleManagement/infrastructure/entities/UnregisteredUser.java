@@ -1,4 +1,4 @@
-package ru.gen.prtime.scheduleManagement.domain.model;
+package ru.gen.prtime.scheduleManagement.infrastructure.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
@@ -6,13 +6,13 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 
-@Comment("Время специалиста доступное для оказания услуг")
+@Comment("Незарегистрированные в приложении клиенты")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "schedule_rule")
-public class ScheduleRule {
+@Table(name = "unregistered_user")
+public class UnregisteredUser {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

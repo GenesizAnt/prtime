@@ -1,4 +1,4 @@
-package ru.gen.prtime.userAccessManagement.infrastructure.config;
+package ru.gen.prtime.userAccessManagement.security.config;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
@@ -14,8 +14,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.authentication.HttpStatusEntryPoint;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import ru.gen.prtime.userAccessManagement.application.JwtRequestFilter;
-import ru.gen.prtime.userAccessManagement.application.services.UserService;
+import ru.gen.prtime.userAccessManagement.jwt.JwtRequestFilter;
+import ru.gen.prtime.userAccessManagement.security.service.UserService;
 
 @EnableWebSecurity
 @EnableMethodSecurity

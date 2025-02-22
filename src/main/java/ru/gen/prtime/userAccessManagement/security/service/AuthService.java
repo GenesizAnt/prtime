@@ -1,4 +1,4 @@
-package ru.gen.prtime.userAccessManagement.application;
+package ru.gen.prtime.userAccessManagement.security.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.HttpStatus;
@@ -10,13 +10,13 @@ import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.RequestBody;
-import ru.gen.prtime.userAccessManagement.application.dto.JwtRequest;
-import ru.gen.prtime.userAccessManagement.application.dto.JwtResponse;
+import ru.gen.prtime.userAccessManagement.jwt.JwtTokenUtils;
+import ru.gen.prtime.userAccessManagement.dto.JwtRequest;
+import ru.gen.prtime.userAccessManagement.dto.JwtResponse;
 import ru.gen.prtime.dto.RegistrationUserDto;
-import ru.gen.prtime.userAccessManagement.application.dto.UserDto;
-import ru.gen.prtime.entity.User;
+import ru.gen.prtime.userAccessManagement.dto.UserDto;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
 import ru.gen.prtime.exeption.AppError;
-import ru.gen.prtime.userAccessManagement.application.services.UserService;
 
 import java.util.Collection;
 
@@ -47,6 +47,6 @@ public class AuthService {
         }
         User user = userService.createNewUser(registrationUserDto);
         //ToDo оптимизировать передачу ФИО
-        return ResponseEntity.ok(new UserDto(user.getId(), user.getUserFullName().getFirstname(), user.getEmail()));
+        return ResponseEntity.ok(new UserDto(user.getId(), user.getEmail(), user.getEmail()));
     }
 }

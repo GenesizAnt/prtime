@@ -1,8 +1,8 @@
-package ru.gen.prtime.userAccessManagement.infrastructure.persistence;
+package ru.gen.prtime.userAccessManagement.security.repository;
 
 import org.springframework.data.repository.CrudRepository;
 import org.springframework.stereotype.Repository;
-import ru.gen.prtime.entity.User;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.util.Optional;
 

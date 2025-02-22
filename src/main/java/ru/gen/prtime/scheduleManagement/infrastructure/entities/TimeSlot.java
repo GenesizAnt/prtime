@@ -1,12 +1,16 @@
-package ru.gen.prtime.scheduleManagement.domain.model;
+package ru.gen.prtime.scheduleManagement.infrastructure.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
-import ru.gen.prtime.entity.User;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.DateTimeAppointment;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
+import ru.gen.prtime.scheduleManagement.domain.model.StatusAppointment;
+import ru.gen.prtime.scheduleManagement.domain.model.StatusTimeSlot;
+
+import java.time.LocalDate;
+import java.time.LocalTime;
 
 @Comment("Время специалиста доступное для оказания услуг")
 @Data
@@ -20,16 +24,23 @@ public class TimeSlot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Embedded
-    private DateTimeAppointment dateTimeAppointment;
+//    @Embedded
+//    private DateTimeAppointment dateTimeAppointment;
+
+    //VO - DateTimeAppointment
+    @Column(name = "date_slot")
+    private LocalDate dateSlot;
+
+    @Column(name = "time_slot")
+    private LocalTime timeStartSlot;
+
+    @Column(name = "day_week")
+    private String dayOfWeek;
+    //
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status_appointment")
     private StatusAppointment statusAppointment;
-
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status_slot")
-    private StatusTimeSlot statusTimeSlot;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
@@ -38,13 +49,17 @@ public class TimeSlot {
     @Column(name = "register_app_client")
     private Boolean statusRegistration;
 
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_slot")
+    private StatusTimeSlot statusTimeSlot;
+
     @ManyToOne
     @JoinColumn(name = "specialist_id")
     private User specialist;
 
     @ManyToOne
     @JoinColumn(name = "calendar_id")
-    private Calendar calendar;
+    private CalendarEntity calendarEntity;
 
     //Cabinet
 }

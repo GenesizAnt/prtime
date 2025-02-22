@@ -1,4 +1,4 @@
-package ru.gen.prtime.userAccessManagement.application;
+package ru.gen.prtime.userAccessManagement.jwt;
 
 import io.jsonwebtoken.Claims;
 import io.jsonwebtoken.Jwts;

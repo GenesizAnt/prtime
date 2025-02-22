@@ -1,4 +1,4 @@
-package ru.gen.prtime.userAccessManagement.application.services;
+package ru.gen.prtime.userAccessManagement.security.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
@@ -9,9 +9,8 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gen.prtime.dto.RegistrationUserDto;
-import ru.gen.prtime.entity.User;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.UserFullName;
-import ru.gen.prtime.userAccessManagement.infrastructure.persistence.UserRepository;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
+import ru.gen.prtime.userAccessManagement.security.repository.UserRepository;
 
 import java.util.List;
 import java.util.Optional;
@@ -33,7 +32,7 @@ public class UserService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(
-                String.format("Userrrr '%s' not found", email)
+                String.format("User '%s' not found", email)
         ));
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),

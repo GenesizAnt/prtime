@@ -1,9 +1,9 @@
-package ru.gen.prtime.userAccessManagement.application.services;
+package ru.gen.prtime.userAccessManagement.security.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.gen.prtime.entity.Role;
-import ru.gen.prtime.userAccessManagement.infrastructure.persistence.RoleRepository;
+import ru.gen.prtime.userAccessManagement.security.entities.Role;
+import ru.gen.prtime.userAccessManagement.security.repository.RoleRepository;
 
 @Service
 @RequiredArgsConstructor

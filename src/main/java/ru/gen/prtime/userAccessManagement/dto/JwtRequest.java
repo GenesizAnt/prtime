@@ -1,4 +1,4 @@
-package ru.gen.prtime.userAccessManagement.application.dto;
+package ru.gen.prtime.userAccessManagement.dto;
 
 import lombok.Data;
 
