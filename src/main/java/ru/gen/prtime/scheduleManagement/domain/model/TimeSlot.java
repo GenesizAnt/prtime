@@ -7,10 +7,6 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 import ru.gen.prtime.entity.User;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.DateTimeAppointment;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.UserFullName;
-
-import java.time.LocalDate;
-import java.time.LocalTime;
 
 @Comment("Время специалиста доступное для оказания услуг")
 @Data
@@ -37,9 +33,9 @@ public class TimeSlot {
 
     @ManyToOne
     @JoinColumn(name = "client_id")
-    private User visitor;
+    private User client;
 
-    @Column(name = "register_visitor")
+    @Column(name = "register_app_client")
     private Boolean statusRegistration;
 
     @ManyToOne
@@ -49,4 +45,6 @@ public class TimeSlot {
     @ManyToOne
     @JoinColumn(name = "calendar_id")
     private Calendar calendar;
+
+    //Cabinet
 }

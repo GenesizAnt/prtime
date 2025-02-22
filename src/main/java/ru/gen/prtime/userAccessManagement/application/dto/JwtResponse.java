@@ -10,6 +10,6 @@ import java.util.Collection;
 @AllArgsConstructor
 public class JwtResponse {
     private String token;
-    private String username;
+    private String email;
     private Collection<GrantedAuthority> authorities;
 }
