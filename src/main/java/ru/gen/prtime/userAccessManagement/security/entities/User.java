@@ -2,8 +2,11 @@ package ru.gen.prtime.userAccessManagement.security.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.CalendarEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.UnregisteredUser;
 
+import java.time.LocalDate;
 import java.util.Collection;
 import java.util.List;
 
@@ -11,6 +14,7 @@ import java.util.List;
 @Data
 @Table(name = "users")
 public class User {
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Column(name = "id")
@@ -25,6 +29,16 @@ public class User {
     //VO - Email
     @Column(name = "email")
     private String email;
+    //
+
+    //VO - phoneNumber
+    @Column(name = "phone_number")
+    private String phoneNumber;
+    //
+
+    //VO - birthday
+    @Column(name = "birthday")
+    private LocalDate birthday;
     //
 
 //    @Embedded
@@ -47,6 +61,12 @@ public class User {
     @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
     private List<TimeSlot> specialistTimeSlots;
 
+    @OneToMany(mappedBy = "calendar", cascade = CascadeType.ALL)
+    private List<CalendarEntity> specialistCalendars;
+
+    @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
+    private List<UnregisteredUser> unregisteredUsers;
+
     @ManyToMany
     @JoinTable(
             name = "users_roles",
@@ -54,4 +74,19 @@ public class User {
             inverseJoinColumns = @JoinColumn(name = "role_id")
     )
     private Collection<Role> roles;
+
+    /*
+    // Методы для преобразования в доменную модель и обратно
+    public User toDomain() {
+        return new User(this.id, this.username, this.email);
+    }
+
+    public static UserEntity fromDomain(User user) {
+        UserEntity entity = new UserEntity();
+        entity.setId(user.getId());
+        entity.setUsername(user.getUsername());
+        entity.setEmail(user.getEmail());
+        return entity;
+    }
+     */
 }

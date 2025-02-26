@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.util.List;
 
@@ -13,15 +14,20 @@ import java.util.List;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
+@Table(name = "calendar")
 public class CalendarEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @ManyToOne
+    @JoinColumn(name = "specialist_id")
+    private User specialist;
+
     @OneToMany(mappedBy = "calendar", cascade = CascadeType.ALL)
     private List<TimeSlot> timeSlot;
 
     @OneToMany(mappedBy = "calendar", cascade = CascadeType.ALL)
-    private List<ScheduleRule> scheduleRules;
+    private List<ScheduleRuleEntity> scheduleRuleEntities;
 }

@@ -5,8 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
 
-@Comment("Незарегистрированные в приложении клиенты")
+import java.time.LocalDate;
+
+@Comment("Незарегистрированные в приложении клиенты, создаются специалистом")
 @Data
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,4 +20,22 @@ public class UnregisteredUser {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+    //VO - UserFullName
+    @Column(name = "firstname")
+    private String firstname;
+
+    @Column(name = "surname")
+    private String surname;
+
+    @Column(name = "patronymic")
+    private String patronymic;
+    //
+
+    @Column(name = "registration_date")
+    private LocalDate registrationDate;
+
+    @ManyToOne
+    @JoinColumn(name = "specialist_id")
+    private User specialist;
 }
