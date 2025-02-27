@@ -25,10 +25,6 @@ public class TimeSlot {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-//    @Embedded
-//    private DateTimeAppointment dateTimeAppointment;
-
-    //VO - DateTimeAppointment
     @Column(name = "date_slot")
     private LocalDate dateSlot;
 
@@ -40,24 +36,19 @@ public class TimeSlot {
 
     @Column(name = "day_week")
     private String dayOfWeek;
-    //
 
     @Enumerated(EnumType.STRING)
     @Column(name = "status_appointment")
     private StatusAppointment statusAppointment;
 
-    @Column(name = "register_app_client")
-    private Boolean statusRegistration;
+    @Enumerated(EnumType.STRING)
+    @Column(name = "status_slot")
+    private StatusTimeSlot statusTimeSlot;
 
     //ToDo сделать job который будет снимать блокировку через 10 мин после начала блокировки (к примеру)
     @Column(name = "locked_at")
     private LocalDateTime lockedAt;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status_slot")
-    private StatusTimeSlot statusTimeSlot;
-
-    //VO @Comment("Пространство, в котором специалист проводит приемы")
     @Column(name = "cabinet_name")
     private String cabinetName;
 
@@ -66,11 +57,13 @@ public class TimeSlot {
 
     @Column(name = "cabinet_description")
     private String cabinetDescription;
-    //
 
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
+
+    @Column(name = "register_app_client")
+    private Boolean statusRegistrationClient;
 
     @ManyToOne
     @JoinColumn(name = "specialist_id")

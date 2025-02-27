@@ -17,6 +17,8 @@ import java.util.List;
 @Table(name = "calendar")
 public class CalendarEntity {
 
+    //ToDo НУЖНА ЛИ ЭТА СУЩНОСТЬ??????
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;

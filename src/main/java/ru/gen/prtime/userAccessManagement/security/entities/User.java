@@ -89,4 +89,31 @@ public class User {
         return entity;
     }
      */
+
+    /*
+    @Repository
+public class UserRepositoryImpl implements UserRepository {
+    private final JpaUserRepository jpaUserRepository;
+
+    public UserRepositoryImpl(JpaUserRepository jpaUserRepository) {
+        this.jpaUserRepository = jpaUserRepository;
+    }
+
+    @Override
+    public Optional<User> findById(Long id) {
+        return jpaUserRepository.findById(id).map(UserEntity::toDomain);
+    }
+
+    @Override
+    public User save(User user) {
+        UserEntity entity = UserEntity.fromDomain(user);
+        return jpaUserRepository.save(entity).toDomain();
+    }
+
+    @Override
+    public void delete(User user) {
+        UserEntity entity = UserEntity.fromDomain(user);
+        jpaUserRepository.delete(entity);
+    }
+     */
 }
