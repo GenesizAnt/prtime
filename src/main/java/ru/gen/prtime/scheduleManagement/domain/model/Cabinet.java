@@ -1,4 +1,4 @@
-package ru.gen.prtime.scheduleManagement.domain.valueobjects;
+package ru.gen.prtime.scheduleManagement.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

@@ -4,7 +4,6 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.Cabinet;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.DateTimeParameters;
 
 import java.time.LocalDateTime;
@@ -15,9 +14,7 @@ import java.time.LocalDateTime;
 @Setter
 public class Appointment {
 
-    //ToDo добавить версионирование в контроллеры есть пример
-
-    private Long id;
+    private Long timeSlotId;
     private DateTimeParameters dateTimeParameters;
     private StatusAppointment statusAppointment;
     private Boolean statusRegistrationClient;

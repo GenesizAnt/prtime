@@ -21,6 +21,8 @@ import java.time.LocalTime;
 @Table(name = "time_slot")
 public class TimeSlot {
 
+    //ToDo Раздел уведомления в приложении
+
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
@@ -49,14 +51,14 @@ public class TimeSlot {
     @Column(name = "locked_at")
     private LocalDateTime lockedAt;
 
-    @Column(name = "cabinet_name")
-    private String cabinetName;
-
-    @Column(name = "cabinet_address")
-    private String cabinetAddress;
-
-    @Column(name = "cabinet_description")
-    private String cabinetDescription;
+//    @Column(name = "cabinet_name")
+//    private String cabinetName;
+//
+//    @Column(name = "cabinet_address")
+//    private String cabinetAddress;
+//
+//    @Column(name = "cabinet_description")
+//    private String cabinetDescription;
 
     @ManyToOne
     @JoinColumn(name = "client_id")
@@ -68,8 +70,4 @@ public class TimeSlot {
     @ManyToOne
     @JoinColumn(name = "specialist_id")
     private User specialist;
-
-    @ManyToOne
-    @JoinColumn(name = "calendar_id")
-    private CalendarEntity calendar;
 }

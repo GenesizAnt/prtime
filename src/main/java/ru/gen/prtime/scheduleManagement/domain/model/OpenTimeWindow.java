@@ -16,7 +16,7 @@ public class OpenTimeWindow {
 
     //ToDo Нужно ли добавить Предпочтительное время для специалиста, устанавливает сам спец?
 
-    private Long id;
+    private Long timeSlotId;
     private DateTimeParameters dateTimeParameters;
     private StatusTimeSlot statusTimeSlot;
     private LocalDateTime lockedAt;

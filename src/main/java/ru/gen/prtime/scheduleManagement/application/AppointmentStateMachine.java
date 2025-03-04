@@ -2,7 +2,7 @@ package ru.gen.prtime.scheduleManagement.application;
 
 public class AppointmentStateMachine {
 
-
+//ToDo Уникальная фишка - анализ и прогнозирование посещений, дохода+ анализ загруженности спец
 
 
 

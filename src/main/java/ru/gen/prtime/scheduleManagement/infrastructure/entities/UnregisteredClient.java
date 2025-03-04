@@ -14,14 +14,13 @@ import java.time.LocalDate;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-@Table(name = "unregistered_user")
-public class UnregisteredUser {
+@Table(name = "unregistered_client")
+public class UnregisteredClient {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    //VO - UserFullName
     @Column(name = "firstname")
     private String firstname;
 
@@ -30,7 +29,6 @@ public class UnregisteredUser {
 
     @Column(name = "patronymic")
     private String patronymic;
-    //
 
     @Column(name = "registration_date")
     private LocalDate registrationDate;

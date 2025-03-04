@@ -6,9 +6,12 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 import ru.gen.prtime.scheduleManagement.domain.model.StatusScheduleRule;
+import ru.gen.prtime.userAccessManagement.security.entities.Role;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.time.Duration;
 import java.time.LocalTime;
+import java.util.Collection;
 
 @Comment("Правила расписания специалиста")
 @Data
@@ -35,6 +38,7 @@ public class ScheduleRuleEntity {
     @Column(name = "count_day_set")
     private Integer countDaySet;
 
+    @Comment("Продолжительность перерыва между приемами")
     @Column(name = "rest_interval")
     private Duration restInterval;
 
@@ -47,13 +51,15 @@ public class ScheduleRuleEntity {
     @Column(name = "end_lunch_time")
     private LocalTime endLunchTime;
 
+    @Comment("Выходные дни")
     @Column(name = "weekend_day")
     private String weekendDay;
 
+    @Comment("Дни недели для установки расписания")
     @Column(name = "day_week_set")
     private String dayOfWeekSet;
 
     @ManyToOne
-    @JoinColumn(name = "calendar_id")
-    private CalendarEntity calendarEntity;
+    @JoinColumn(name = "specialist_id")
+    private User specialist;
 }
