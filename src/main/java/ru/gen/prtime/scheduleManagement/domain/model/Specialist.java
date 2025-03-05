@@ -18,6 +18,7 @@ public class Specialist {
     private PersonFullName fullName;
     private Calendar calendar;
     private List<Client> clients;
+    //нужно ли добавлять список услуг??
 
     public Specialist(Long userId, PersonFullName fullName) {
         this.userId = userId;

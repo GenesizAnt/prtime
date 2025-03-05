@@ -21,4 +21,6 @@ public class OpenTimeWindow {
     private StatusTimeSlot statusTimeSlot;
     private LocalDateTime lockedAt;
     private Specialist specialist;
+
+    // добавить список услуг!
 }

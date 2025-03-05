@@ -21,7 +21,7 @@ import java.time.LocalTime;
 @Table(name = "time_slot")
 public class TimeSlot {
 
-    //ToDo Раздел уведомления в приложении
+    //ToDo нужен отдельный раздел уведомления/сообщениями в приложении
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,11 +43,15 @@ public class TimeSlot {
     @Column(name = "status_appointment")
     private StatusAppointment statusAppointment;
 
+    @Column(name = "is_primary_visit")
+    private Boolean isPrimaryVisit;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status_slot")
     private StatusTimeSlot statusTimeSlot;
 
     //ToDo сделать job который будет снимать блокировку через 10 мин после начала блокировки (к примеру)
+    @Comment("Время блокировки слота для операций")
     @Column(name = "locked_at")
     private LocalDateTime lockedAt;
 

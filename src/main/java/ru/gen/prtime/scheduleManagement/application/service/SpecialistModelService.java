@@ -1,6 +1,6 @@
 package ru.gen.prtime.scheduleManagement.application.service;
 
-public class SpecialistService {
+public class SpecialistModelService {
 
     /*
         public Client toClient() {

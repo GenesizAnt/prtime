@@ -21,4 +21,5 @@ public class ScheduleRule {
     private List<String> weekendDay;
     private List<String> dayOfWeekSet;
     private Cabinet cabinet;
+    // добавить услуги! возможно в сущность????
 }

@@ -23,7 +23,7 @@ import ru.gen.prtime.userAccessManagement.security.service.UserService;
 @Configuration
 public class SecurityConfig {
 
-    //ToDo Страница регистрации для клиента это сайт визитка специалиста
+    //ToDo IDEA Страница регистрации для клиента это сайт визитка специалиста
 
     private final UserService userService;
     private final PasswordEncoder passwordEncoder;

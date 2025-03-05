@@ -5,7 +5,6 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
-import ru.gen.prtime.userAccessManagement.security.entities.Role;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.util.Collection;

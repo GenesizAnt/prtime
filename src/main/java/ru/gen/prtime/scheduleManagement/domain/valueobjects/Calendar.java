@@ -18,6 +18,7 @@ import java.util.List;
 @Setter
 public class Calendar {
 
+    //ToDo IDEA Отображение календаря как даты, а при нажатии на дату внизу отображать встречи окошки
     private Specialist specialist;
     private List<Appointment> appointments;
     private List<OpenTimeWindow> openTimeWindows;

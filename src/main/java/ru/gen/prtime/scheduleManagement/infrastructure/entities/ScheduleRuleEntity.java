@@ -43,7 +43,7 @@ public class ScheduleRuleEntity {
     private Duration restInterval;
 
     @Column(name = "base_duration_appointment")
-    private Duration baseDurationAppointment;
+    private Duration baseDurationAppointment; //ToDo https://qaa-engineer.ru/kak-ispolzovat-tip-interval-v-postgresql/
 
     @Column(name = "start_lunch_time")
     private LocalTime startLunchTime;

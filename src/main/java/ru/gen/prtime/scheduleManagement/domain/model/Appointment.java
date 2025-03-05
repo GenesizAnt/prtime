@@ -22,4 +22,9 @@ public class Appointment {
     private Client client;
     private Specialist specialist;
     private Cabinet cabinet;
+
+    //    @Column(name = "is_primary_visit")
+    //    private Boolean isPrimaryVisit;
+
+    // добавить услугу!
 }
