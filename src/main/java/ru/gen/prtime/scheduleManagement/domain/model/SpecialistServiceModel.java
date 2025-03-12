@@ -5,14 +5,17 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 
+import java.math.BigDecimal;
+
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter
 @Setter
-public class Cabinet {
+public class SpecialistServiceModel {
 
     private Long id;
-    private String cabinetName;
-    private String cabinetAddress;
-    private String cabinetDescription;
+    private String serviceName;
+    private String description;
+    private String shortDescription;
+    private BigDecimal price;
 }

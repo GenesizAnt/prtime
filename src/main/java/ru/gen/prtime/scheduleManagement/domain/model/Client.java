@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.Email;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.PersonFullName;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.PhoneNumber;
+
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -17,11 +17,8 @@ public class Client {
     private Long userId;
     private PersonFullName personFullName;
     private Boolean statusRegistration;
+    private List<Appointment> futureAppointments;
+    private List<Appointment> patsAppointments;
+    private List<Appointment> allAppointments;
     private Specialist specialist;
-
-    public Client(Long userId, PersonFullName personFullName, Boolean statusRegistration) {
-        this.userId = userId;
-        this.personFullName = personFullName;
-        this.statusRegistration = statusRegistration;
-    }
 }

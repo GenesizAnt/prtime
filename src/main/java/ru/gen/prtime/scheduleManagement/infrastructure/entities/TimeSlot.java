@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
+import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 import ru.gen.prtime.scheduleManagement.domain.model.StatusAppointment;
 import ru.gen.prtime.scheduleManagement.domain.model.StatusTimeSlot;
@@ -74,4 +75,8 @@ public class TimeSlot {
     @ManyToOne
     @JoinColumn(name = "specialist_id")
     private User specialist;
+
+    @ManyToOne
+    @JoinColumn(name = "specialistService_id")
+    private SpecialistServicesEntity specialistService;
 }

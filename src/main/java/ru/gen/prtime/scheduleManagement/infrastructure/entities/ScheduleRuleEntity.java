@@ -6,6 +6,7 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 import ru.gen.prtime.scheduleManagement.domain.model.StatusScheduleRule;
+import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
 import ru.gen.prtime.userAccessManagement.security.entities.Role;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
@@ -43,7 +44,7 @@ public class ScheduleRuleEntity {
     private Duration restInterval;
 
     @Column(name = "base_duration_appointment")
-    private Duration baseDurationAppointment; //ToDo https://qaa-engineer.ru/kak-ispolzovat-tip-interval-v-postgresql/
+    private Duration baseDurationAppointment;
 
     @Column(name = "start_lunch_time")
     private LocalTime startLunchTime;
@@ -62,4 +63,12 @@ public class ScheduleRuleEntity {
     @ManyToOne
     @JoinColumn(name = "specialist_id")
     private User specialist;
+
+    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    @JoinTable(
+            name = "schedule_rules_specialist_services",
+            joinColumns = @JoinColumn(name = "schedule_rule_id"),
+            inverseJoinColumns = @JoinColumn(name = "specialist_services_entity_id")
+    )
+    private Collection<SpecialistServicesEntity> specialistServicesEntities;
 }

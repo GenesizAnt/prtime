@@ -11,6 +11,7 @@ import ru.gen.prtime.scheduleManagement.infrastructure.entities.CabinetEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.UnregisteredClient;
+import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
 
 import java.time.LocalDate;
 import java.util.Collection;
@@ -61,6 +62,9 @@ public class User {
 
     @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
     private List<CabinetEntity> cabinets;
+
+    @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
+    private List<SpecialistServicesEntity> specialistServices;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(

@@ -1,13 +1,9 @@
-package ru.gen.prtime.scheduleManagement.domain.valueobjects;
+package ru.gen.prtime.scheduleManagement.domain.model;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.domain.model.Appointment;
-import ru.gen.prtime.scheduleManagement.domain.model.OpenTimeWindow;
-import ru.gen.prtime.scheduleManagement.domain.model.ScheduleRule;
-import ru.gen.prtime.scheduleManagement.domain.model.Specialist;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 
 import java.util.List;

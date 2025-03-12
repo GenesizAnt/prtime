@@ -7,6 +7,7 @@ import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.DateTimeParameters;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -15,12 +16,10 @@ import java.time.LocalDateTime;
 public class OpenTimeWindow {
 
     //ToDo Нужно ли добавить Предпочтительное время для специалиста, устанавливает сам спец?
-
     private Long timeSlotId;
     private DateTimeParameters dateTimeParameters;
     private StatusTimeSlot statusTimeSlot;
     private LocalDateTime lockedAt;
     private Specialist specialist;
-
-    // добавить список услуг!
+    private List<SpecialistServiceModel> availableServiceList;
 }

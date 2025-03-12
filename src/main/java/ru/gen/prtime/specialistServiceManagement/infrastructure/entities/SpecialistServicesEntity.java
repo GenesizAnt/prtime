@@ -5,6 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.math.BigDecimal;
 import java.time.Duration;
@@ -34,20 +36,13 @@ public class SpecialistServicesEntity {
     @Column(name = "price")
     private BigDecimal price;
 
-    @Column(name = "special_tariff")
-    @Enumerated(EnumType.STRING)
-    private TypeTariff typeTariff; //ToDo базовая услуга, акция
-
-    // @Column(name = "special_tariff")
-    @Enumerated(EnumType.STRING)
-    private TypeTariff typeTariff; //ToDo первичный, вторичный is_primary_visit
-
-    //ToDo список Акций, которые есть у услуги - private Integer discount;
+    @Column(name = "is_actual")
+    private Boolean isActual;
 
     @ManyToOne
-    @JoinColumn(name = "person_id", referencedColumnName = "id")
-    private Person ownerService;
+    @JoinColumn(name = "specialist_id")
+    private User specialist;
 
-    @OneToMany(mappedBy = "professionalServices")
-    private List<SpecialistAppointments> listServicesRendered;
+    @OneToMany(mappedBy = "specialistService", cascade = CascadeType.ALL)
+    private List<TimeSlot> appointments;
 }
