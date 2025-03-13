@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.*;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.util.List;
 
@@ -18,10 +19,11 @@ public class Specialist {
     private PersonFullName fullName;
     private Calendar calendar;
     private List<Client> clients;
-    //нужно ли добавлять список услуг??
+    private List<SpecialistServiceModel> availableServiceList;
 
-    public Specialist(Long userId, PersonFullName fullName) {
-        this.userId = userId;
-        this.fullName = fullName;
+    public Specialist(User user) {
+        this.userId = user.getId();
+        this.fullName = new PersonFullName(user.getFirstname(), user.getSurname(), user.getPatronymic());
+        this.calendar = new Calendar(user);
     }
 }

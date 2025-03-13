@@ -13,6 +13,7 @@ import ru.gen.prtime.userAccessManagement.security.entities.User;
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.Collection;
+import java.util.List;
 
 @Comment("Правила расписания специалиста")
 @Data
@@ -70,5 +71,8 @@ public class ScheduleRuleEntity {
             joinColumns = @JoinColumn(name = "schedule_rule_id"),
             inverseJoinColumns = @JoinColumn(name = "specialist_services_entity_id")
     )
-    private Collection<SpecialistServicesEntity> specialistServicesEntities;
+    private List<SpecialistServicesEntity> specialistServicesEntities;
+
+    @ManyToMany(mappedBy = "scheduleRules", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<CabinetEntity> cabinetEntityList;
 }

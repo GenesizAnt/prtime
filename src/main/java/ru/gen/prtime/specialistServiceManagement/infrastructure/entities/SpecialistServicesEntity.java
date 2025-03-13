@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
@@ -45,4 +46,7 @@ public class SpecialistServicesEntity {
 
     @OneToMany(mappedBy = "specialistService", cascade = CascadeType.ALL)
     private List<TimeSlot> appointments;
+
+    @ManyToMany(mappedBy = "specialistServicesEntities", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+    private List<ScheduleRuleEntity> scheduleRuleList;
 }

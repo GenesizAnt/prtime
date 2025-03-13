@@ -32,7 +32,7 @@ public class UserService implements UserDetailsService {
     @Transactional
     public UserDetails loadUserByUsername(String email) throws UsernameNotFoundException {
         User user = findByEmail(email).orElseThrow(() -> new UsernameNotFoundException(
-                String.format("User '%s' not found", email)
+                String.format("Пользователь с email: '%s' не найден", email)
         ));
         return new org.springframework.security.core.userdetails.User(
                 user.getEmail(),
@@ -47,5 +47,9 @@ public class UserService implements UserDetailsService {
         user.setPassword(passwordEncoder.encode(registrationUserDto.getPassword()));
         user.setRoles(List.of(roleService.getUserRole()));
         return userRepository.save(user);
+    }
+
+    public Optional<User> getUserById(Long userId) {
+        return userRepository.findById(userId);
     }
 }

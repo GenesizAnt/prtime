@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.DailyWorkSchedule;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 
 import java.util.List;
 
@@ -22,5 +23,10 @@ public class ScheduleRule {
     private List<String> dayOfWeekSet;
     private Cabinet cabinet;
     private List<SpecialistServiceModel> availableServiceList;
-    // добавить услуги! возможно в сущность????
+
+    public ScheduleRule(ScheduleRuleEntity scheduleRuleEntity) {
+        this.scheduleRuleId = scheduleRuleEntity.getId();
+        this.statusScheduleRule = scheduleRuleEntity.getStatusScheduleRule();
+
+    }
 }

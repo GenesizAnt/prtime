@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.DateTimeParameters;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 
 import java.time.LocalDateTime;
 
@@ -19,9 +20,22 @@ public class Appointment {
     private StatusAppointment statusAppointment;
     private Boolean statusRegistrationClient;
     private LocalDateTime lockedAt;
-    private Client client;
-    private Specialist specialist;
+    private Long clientId;
+    private Long specialistId;
     private Cabinet cabinet;
     private SpecialistServiceModel specialistService;
     private Boolean isPrimaryVisit;
+
+    public Appointment(TimeSlot timeSlot) {
+        this.timeSlotId = timeSlot.getId();
+        this.dateTimeParameters = new DateTimeParameters(timeSlot);
+        this.statusAppointment = timeSlot.getStatusAppointment();
+        this.statusRegistrationClient = timeSlot.getStatusRegistrationClient();
+        this.lockedAt = timeSlot.getLockedAt();
+        this.clientId = timeSlot.getClient().getId();
+        this.specialistId = timeSlot.getSpecialist().getId();
+        this.cabinet = new Cabinet(timeSlot.getCabinet());
+        this.specialistService = new SpecialistServiceModel(timeSlot.getSpecialistService());
+        this.isPrimaryVisit = timeSlot.getIsPrimaryVisit();
+    }
 }

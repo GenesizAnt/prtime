@@ -5,6 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.DateTimeParameters;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 
 import java.time.LocalDateTime;
 import java.util.List;
@@ -20,6 +21,13 @@ public class OpenTimeWindow {
     private DateTimeParameters dateTimeParameters;
     private StatusTimeSlot statusTimeSlot;
     private LocalDateTime lockedAt;
-    private Specialist specialist;
-    private List<SpecialistServiceModel> availableServiceList;
+    private Long specialistId;
+
+    public OpenTimeWindow(TimeSlot timeSlot) {
+        this.timeSlotId = timeSlot.getId();
+        this.dateTimeParameters = new DateTimeParameters(timeSlot);
+        this.statusTimeSlot = timeSlot.getStatusTimeSlot();
+        this.lockedAt = timeSlot.getLockedAt();
+        this.specialistId = timeSlot.getSpecialist().getId();
+    }
 }

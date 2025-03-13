@@ -8,6 +8,7 @@ import org.hibernate.annotations.Comment;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.util.Collection;
+import java.util.List;
 
 @Comment("Пространство, в котором специалист проводит приемы")
 @Data
@@ -30,6 +31,9 @@ public class CabinetEntity {
     @Column(name = "cabinet_description")
     private String cabinetDescription;
 
+    @OneToMany(mappedBy = "cabinet", cascade = CascadeType.ALL)
+    private List<TimeSlot> timeSlots;
+
     @ManyToOne
     @JoinColumn(name = "specialist_id")
     private User specialist;
@@ -40,5 +44,5 @@ public class CabinetEntity {
             joinColumns = @JoinColumn(name = "сabinet_specialist_id"),
             inverseJoinColumns = @JoinColumn(name = "schedule_rule_id")
     )
-    private Collection<ScheduleRuleEntity> scheduleRules;
+    private List<ScheduleRuleEntity> scheduleRules;
 }

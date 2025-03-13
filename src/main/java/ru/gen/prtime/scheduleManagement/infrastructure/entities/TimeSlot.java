@@ -79,4 +79,8 @@ public class TimeSlot {
     @ManyToOne
     @JoinColumn(name = "specialistService_id")
     private SpecialistServicesEntity specialistService;
+
+    @ManyToOne
+    @JoinColumn(name = "cabinet_id")
+    private CabinetEntity cabinet;
 }
