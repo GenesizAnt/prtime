@@ -26,7 +26,6 @@ public class Calendar {
     private List<Appointment> appointments;
     private List<OpenTimeWindow> openTimeWindows;
     private List<TimeSlot> allTimeWindows;
-    private List<ScheduleRule> scheduleRules;
 
     public Calendar(User user) {
         this.allTimeWindows = user.getSpecialistTimeSlots();
@@ -38,13 +37,6 @@ public class Calendar {
                 .filter(it -> it.getStatusTimeSlot().equals(VACANT))
                 .map(this::convertToOpenTimeWindow)
                 .collect(Collectors.toList());
-        this.scheduleRules = user.getScheduleRuleEntities().stream()
-                .map(this::convertToScheduleRule)
-                .collect(Collectors.toList());
-    }
-
-    private ScheduleRule convertToScheduleRule(ScheduleRuleEntity scheduleRuleEntity) {
-        return new ScheduleRule(scheduleRuleEntity);
     }
 
     private OpenTimeWindow convertToOpenTimeWindow(TimeSlot timeSlot) {

@@ -6,8 +6,12 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.DailyWorkSchedule;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
+import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
 
 import java.util.List;
+import java.util.stream.Collectors;
+
+import static ru.gen.prtime.scheduleManagement.domain.model.StatusTimeSlot.APPOINTMENT;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -21,12 +25,21 @@ public class ScheduleRule {
     private Integer countDaySet;
     private List<String> weekendDay;
     private List<String> dayOfWeekSet;
-    private Cabinet cabinet;
     private List<SpecialistServiceModel> availableServiceList;
 
     public ScheduleRule(ScheduleRuleEntity scheduleRuleEntity) {
         this.scheduleRuleId = scheduleRuleEntity.getId();
         this.statusScheduleRule = scheduleRuleEntity.getStatusScheduleRule();
+        this.dailyWorkSchedule = new DailyWorkSchedule(scheduleRuleEntity);
+        this.countDaySet = scheduleRuleEntity.getCountDaySet();
+        this.weekendDay = List.of(scheduleRuleEntity.getDayOfWeekSet().split(";"));
+        this.dayOfWeekSet = List.of(scheduleRuleEntity.getDayOfWeekSet().split(";"));
+        this.availableServiceList = scheduleRuleEntity.getSpecialistServicesEntities().stream()
+                .map(this::convertToSpecialistService)
+                .collect(Collectors.toList());
+    }
 
+    private SpecialistServiceModel convertToSpecialistService(SpecialistServicesEntity specialistServicesEntity) {
+        return new SpecialistServiceModel(specialistServicesEntity);
     }
 }
