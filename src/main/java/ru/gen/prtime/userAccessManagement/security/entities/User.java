@@ -53,9 +53,6 @@ public class User {
     private List<ScheduleRuleEntity> scheduleRuleEntities;
 
     @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
-    private List<UnregisteredClient> unregisteredClients;
-
-    @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
     private List<CabinetEntity> cabinets;
 
     @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)

@@ -5,6 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.UnregisteredClient;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.time.LocalDateTime;
@@ -28,6 +29,13 @@ public class SpecialistClientRelation {
     @ManyToOne
     @JoinColumn(name = "client_id")
     private User client;
+
+    @OneToOne
+    @JoinColumn(name = "unregistered_client_id")
+    private UnregisteredClient unregisteredClient;
+
+    @Column(name = "is_registered")
+    private Boolean isRegistered;
 
     @Column(name = "notes")
     private String notes;
