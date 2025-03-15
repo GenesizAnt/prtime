@@ -2,19 +2,14 @@ package ru.gen.prtime.userAccessManagement.security.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import ru.gen.prtime.scheduleManagement.domain.model.Client;
-import ru.gen.prtime.scheduleManagement.domain.model.Specialist;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.Email;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.PersonFullName;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.PhoneNumber;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.CabinetEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.UnregisteredClient;
+import ru.gen.prtime.specialistAdministrationWork.infrastructure.entities.SpecialistClientRelation;
 import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
 
 import java.time.LocalDate;
-import java.util.Collection;
 import java.util.List;
 
 @Entity
@@ -65,6 +60,12 @@ public class User {
 
     @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
     private List<SpecialistServicesEntity> specialistServices;
+
+    @OneToMany(mappedBy = "client", cascade = CascadeType.ALL)
+    private List<SpecialistClientRelation> clientRelationList;
+
+    @OneToMany(mappedBy = "specialist", cascade = CascadeType.ALL)
+    private List<SpecialistClientRelation> specialistRelationList;
 
     @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     @JoinTable(

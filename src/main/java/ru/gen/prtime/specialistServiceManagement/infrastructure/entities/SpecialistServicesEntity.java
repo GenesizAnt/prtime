@@ -10,7 +10,7 @@ import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.math.BigDecimal;
-import java.time.Duration;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Comment("Услуги, которые оказывает специалист")
@@ -39,6 +39,9 @@ public class SpecialistServicesEntity {
 
     @Column(name = "is_actual")
     private Boolean isActual;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "specialist_id")

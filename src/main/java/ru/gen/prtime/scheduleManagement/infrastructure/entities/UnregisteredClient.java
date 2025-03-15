@@ -8,6 +8,7 @@ import org.hibernate.annotations.Comment;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 
 @Comment("Незарегистрированные в приложении клиенты, создаются специалистом")
 @Data
@@ -32,6 +33,9 @@ public class UnregisteredClient {
 
     @Column(name = "registration_date")
     private LocalDate registrationDate;
+
+    @Column(name = "created_at")
+    private LocalDateTime createdAt;
 
     @ManyToOne
     @JoinColumn(name = "specialist_id")

@@ -4,9 +4,12 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.gen.prtime.scheduleManagement.domain.valueobjects.Email;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.PersonFullName;
+import ru.gen.prtime.scheduleManagement.domain.valueobjects.PhoneNumber;
+import ru.gen.prtime.specialistAdministrationWork.infrastructure.entities.SpecialistClientRelation;
 
-import java.util.List;
+import java.time.LocalDate;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -16,9 +19,12 @@ public class Client {
 
     private Long userId;
     private PersonFullName personFullName;
+    private Email email;
+    private PhoneNumber phoneNumber;
+    private LocalDate birthday;
     private Boolean statusRegistration;
-    private List<Appointment> futureAppointments;
-    private List<Appointment> patsAppointments;
-    private List<Appointment> allAppointments;
-    private Specialist specialist;
+
+    public Client(SpecialistClientRelation specialistClientRelation) {
+
+    }
 }
