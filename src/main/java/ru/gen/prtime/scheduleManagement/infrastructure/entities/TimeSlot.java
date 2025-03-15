@@ -47,6 +47,15 @@ public class TimeSlot {
     @Column(name = "is_primary_visit")
     private Boolean isPrimaryVisit;
 
+    @Column(name = "is_need_confirm_client")
+    private Boolean isNeedConfirmClient;
+
+    @Column(name = "is_confirm_client")
+    private Boolean isConfirmClient;
+
+    @Column(name = "is_confirm_specialist")
+    private Boolean isConfirmSpecialist;
+
     @Enumerated(EnumType.STRING)
     @Column(name = "status_slot")
     private StatusTimeSlot statusTimeSlot;
