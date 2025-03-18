@@ -13,6 +13,8 @@ import java.util.NoSuchElementException;
 @RequiredArgsConstructor
 public class TimeSlotManageService {
 
+    //ToDo Уникальная фишка - анализ и прогнозирование посещений, дохода+ анализ загруженности спец
+
     private final TimeSlotService timeSlotService;
 
     public Appointment getAppointmentById(Long timeSlotId) {

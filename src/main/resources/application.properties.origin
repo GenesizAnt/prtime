@@ -16,3 +16,5 @@ spring.thymeleaf.check-template-location=
 
 jwt.secret=
 jwt.lifetime=
+
+api.prefix=
