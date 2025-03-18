@@ -8,7 +8,6 @@ import lombok.Setter;
 import java.util.regex.Pattern;
 
 @NoArgsConstructor
-@AllArgsConstructor
 @Getter
 @Setter
 public class Email {

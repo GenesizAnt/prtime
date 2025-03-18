@@ -4,6 +4,7 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.gen.prtime.scheduleManagement.domain.model.Appointment;
 import ru.gen.prtime.scheduleManagement.domain.model.OpenTimeWindow;
+import ru.gen.prtime.scheduleManagement.domain.model.ScheduleRule;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
 import ru.gen.prtime.scheduleManagement.infrastructure.service.TimeSlotService;
 
@@ -30,4 +31,8 @@ public class TimeSlotManageService {
         ));
         return new OpenTimeWindow(timeSlot);
     }
+
+//    public ScheduleRule createNewTimeSlotScheduleSpecialist(ScheduleRule scheduleRule) {
+//        return null;
+//    }
 }
