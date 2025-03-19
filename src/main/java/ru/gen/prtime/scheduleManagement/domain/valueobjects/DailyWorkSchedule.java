@@ -21,7 +21,6 @@ public class DailyWorkSchedule {
     private Duration baseDurationAppointment;
     private LocalTime startLunchTime;
     private LocalTime endLunchTime;
-    private Duration lunchDuration;
 
     public DailyWorkSchedule(ScheduleRuleEntity scheduleRuleEntity) {
         validateStartAndEndWorkTime(scheduleRuleEntity.getStartWorkTime(), scheduleRuleEntity.getEndWorkTime());
@@ -37,7 +36,6 @@ public class DailyWorkSchedule {
         this.baseDurationAppointment = scheduleRuleEntity.getBaseDurationAppointment();
         this.startLunchTime = scheduleRuleEntity.getStartLunchTime();
         this.endLunchTime = scheduleRuleEntity.getEndLunchTime();
-        this.lunchDuration = Duration.between(scheduleRuleEntity.getStartLunchTime(), scheduleRuleEntity.getEndLunchTime());
     }
 
     private void validateStartAndEndWorkTime(LocalTime startWorkTime, LocalTime endWorkTime) {

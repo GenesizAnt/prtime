@@ -7,12 +7,10 @@ import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
 import ru.gen.prtime.scheduleManagement.domain.model.StatusScheduleRule;
 import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
-import ru.gen.prtime.userAccessManagement.security.entities.Role;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.time.Duration;
 import java.time.LocalTime;
-import java.util.Collection;
 import java.util.List;
 
 @Comment("Правила расписания специалиста")
@@ -27,9 +25,8 @@ public class ScheduleRuleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @Enumerated(EnumType.STRING)
-    @Column(name = "status_schedule")
-    private StatusScheduleRule statusScheduleRule;
+    @Column(name = "is_status_base")
+    Boolean isStatusBase;
 
     @Column(name = "start_work_time")
     private LocalTime startWorkTime;

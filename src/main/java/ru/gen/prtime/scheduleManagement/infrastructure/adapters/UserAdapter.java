@@ -1,5 +1,6 @@
 package ru.gen.prtime.scheduleManagement.infrastructure.adapters;
 
+import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
@@ -18,6 +19,12 @@ public class UserAdapter {
                 String.format("Пользователь с id: '%s' не найден", userId)
         ));
         return new Specialist(user);
+    }
+
+    public User getUserById(@NotNull Long userId) {
+        return userService.getUserById(userId).orElseThrow(() -> new UsernameNotFoundException(
+                String.format("Пользователь с id: '%s' не найден", userId)
+        ));
     }
 }
 

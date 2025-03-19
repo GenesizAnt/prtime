@@ -1,20 +1,9 @@
 package ru.gen.prtime.scheduleManagement.api.controllers;
 
-import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
-import org.modelmapper.ModelMapper;
-import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindException;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.gen.prtime.entity.Reception;
-import ru.gen.prtime.scheduleManagement.api.dto.ScheduleRuleDto;
-import ru.gen.prtime.scheduleManagement.api.mapper.ScheduleRuleMapper;
 import ru.gen.prtime.scheduleManagement.application.service.TimeSlotManageService;
-import ru.gen.prtime.scheduleManagement.domain.model.ScheduleRule;
 
 @RequiredArgsConstructor
 @RestController

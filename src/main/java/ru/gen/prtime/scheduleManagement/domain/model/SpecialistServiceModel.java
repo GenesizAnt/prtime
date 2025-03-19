@@ -14,7 +14,7 @@ import java.math.BigDecimal;
 @Setter
 public class SpecialistServiceModel {
 
-    private Long id;
+    private Long specialistServiceId;
     private String serviceName;
     private String description;
     private String shortDescription;
@@ -26,7 +26,7 @@ public class SpecialistServiceModel {
         validateShortDescription(specialistService.getShortDescription());
         validatePrice(specialistService.getPrice());
 
-        this.id = specialistService.getId();
+        this.specialistServiceId = specialistService.getId();
         this.serviceName = specialistService.getServiceName();
         this.description = specialistService.getDescription();
         this.shortDescription = specialistService.getShortDescription();

@@ -11,8 +11,6 @@ import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.Special
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static ru.gen.prtime.scheduleManagement.domain.model.StatusTimeSlot.APPOINTMENT;
-
 @NoArgsConstructor
 @AllArgsConstructor
 @Getter

@@ -1,21 +1,24 @@
-package ru.gen.prtime.scheduleManagement.api.dto;
+package ru.gen.prtime.scheduleManagement.api.dto.schedule_rule;
 
 import jakarta.validation.constraints.Min;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Positive;
 import jakarta.validation.constraints.Size;
 import ru.gen.prtime.scheduleManagement.domain.model.SpecialistServiceModel;
-import ru.gen.prtime.scheduleManagement.domain.model.StatusScheduleRule;
 
 import java.time.Duration;
 import java.time.LocalTime;
 import java.util.List;
 
-public record ScheduleRuleDto(
+public record AddScheduleRuleResponse(
+        @NotNull
         Long scheduleRuleId,
 
         @NotNull
-        StatusScheduleRule statusScheduleRule,
+        Long specialistId,
+
+        @NotNull
+        Boolean isStatusBase,
 
         @NotNull
         LocalTime startWorkTime,
@@ -38,10 +41,6 @@ public record ScheduleRuleDto(
         LocalTime endLunchTime,
 
         @NotNull
-        @Positive
-        Duration lunchDuration,
-
-        @NotNull
         @Min(value = 1)
         Integer countDaySet,
 
@@ -53,8 +52,12 @@ public record ScheduleRuleDto(
         @Size(min = 1, max = 7)
         List<String> dayOfWeekSet,
 
-        @NotNull
-        @Size(min = 1)
-        List<SpecialistServiceModel> availableServiceList
+//        @NotNull
+//        @Size(min = 1)
+//        List<Long> availableServiceList,
+//
+//        @NotNull
+//        @Size(min = 1)
+//        List<Long> cabinetList
 ) {
 }
