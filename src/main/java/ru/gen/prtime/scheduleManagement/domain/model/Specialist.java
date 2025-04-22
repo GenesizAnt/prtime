@@ -7,7 +7,6 @@ import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domain.valueobjects.*;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.CabinetEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.UnregisteredClient;
 import ru.gen.prtime.specialistAdministrationWork.infrastructure.entities.SpecialistClientRelation;
 import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
@@ -23,7 +22,7 @@ public class Specialist {
 
     private Long userId;
     private PersonFullName fullName;
-    private Calendar calendar;
+    private CalendarSpecialist calendarSpecialist;
     private List<Client> clients;
     private List<SpecialistServiceModel> availableServiceList;
     private List<Cabinet> cabinets;
@@ -32,7 +31,7 @@ public class Specialist {
     public Specialist(User user) {
         this.userId = user.getId();
         this.fullName = new PersonFullName(user.getFirstname(), user.getSurname(), user.getPatronymic());
-        this.calendar = new Calendar(user);
+        this.calendarSpecialist = new CalendarSpecialist(user);
         this.clients = user.getClientRelationList().stream().map(this::convertToClient).collect(Collectors.toList());
         this.availableServiceList = user.getSpecialistServices().stream().map(this::convertToSpecialistServiceModel).collect(Collectors.toList());
         this.cabinets = user.getCabinets().stream().map(this::convertToCabinet).collect(Collectors.toList());
