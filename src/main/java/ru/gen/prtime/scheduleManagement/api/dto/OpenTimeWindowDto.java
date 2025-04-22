@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotBlank;
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.PastOrPresent;
 import jakarta.validation.constraints.Pattern;
-import ru.gen.prtime.scheduleManagement.domain.model.StatusTimeSlot;
+import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.StatusTimeSlot;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

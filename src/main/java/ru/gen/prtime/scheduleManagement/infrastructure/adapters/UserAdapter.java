@@ -4,7 +4,7 @@ import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Component;
-import ru.gen.prtime.scheduleManagement.domain.model.Specialist;
+import ru.gen.prtime.scheduleManagement.domainAppointmentManaged.model.Specialist;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 import ru.gen.prtime.userAccessManagement.security.service.UserService;
 

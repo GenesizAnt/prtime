@@ -2,8 +2,8 @@ package ru.gen.prtime.scheduleManagement.infrastructure.adapters;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
-import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
-import ru.gen.prtime.specialistServiceManagement.infrastructure.repositories.SpecialistServicesRepository;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistServicesEntity;
+import ru.gen.prtime.scheduleManagement.infrastructure.repositories.SpecialistServicesRepository;
 
 @Component
 @RequiredArgsConstructor

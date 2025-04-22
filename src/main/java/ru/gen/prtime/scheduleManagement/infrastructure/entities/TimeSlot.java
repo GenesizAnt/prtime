@@ -5,10 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
-import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
-import ru.gen.prtime.scheduleManagement.domain.model.StatusAppointment;
-import ru.gen.prtime.scheduleManagement.domain.model.StatusTimeSlot;
+import ru.gen.prtime.scheduleManagement.domainAppointmentManaged.model.StatusAppointment;
+import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.StatusTimeSlot;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;

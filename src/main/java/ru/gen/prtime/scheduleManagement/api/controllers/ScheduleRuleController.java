@@ -14,15 +14,15 @@ import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleReq
 import ru.gen.prtime.scheduleManagement.api.dto.ApiResponse;
 import ru.gen.prtime.scheduleManagement.api.mapper.ScheduleRuleMapper;
 import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleInput;
-import ru.gen.prtime.scheduleManagement.application.service.ScheduleRuleService;
-import ru.gen.prtime.scheduleManagement.domain.model.ScheduleRule;
+import ru.gen.prtime.scheduleManagement.application.usecase.ScheduleRuleUsecase;
+import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("${api.prefix}/schedule-rule")
 public class ScheduleRuleController {
 
-    private final ScheduleRuleService scheduleRuleService;
+    private final ScheduleRuleUsecase scheduleRuleUsecase;
     private final ScheduleRuleMapper scheduleRuleMapper;
     private final ModelMapper modelMapper;
 
@@ -36,7 +36,7 @@ public class ScheduleRuleController {
                 throw new BindException(bindingResult);
             }
         } else {
-            ScheduleRule newScheduleRule = scheduleRuleService.createNewScheduleRule(modelMapper.map(addScheduleRuleRequest, AddScheduleRuleInput.class));
+            ScheduleRule newScheduleRule = scheduleRuleUsecase.createNewScheduleRule(modelMapper.map(addScheduleRuleRequest, AddScheduleRuleInput.class));
             return ResponseEntity.ok(
                     new ApiResponse(
                             "Добавлен новый шаблон расписания",

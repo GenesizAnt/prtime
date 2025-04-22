@@ -4,9 +4,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.domain.model.Appointment;
-import ru.gen.prtime.scheduleManagement.domain.model.Specialist;
-import ru.gen.prtime.scheduleManagement.domain.valueobjects.PersonFullName;
+import ru.gen.prtime.scheduleManagement.domainAppointmentManaged.model.Appointment;
+import ru.gen.prtime.scheduleManagement.domainAppointmentManaged.model.Specialist;
+import ru.gen.prtime.scheduleManagement.shared.valueobjects.PersonFullName;
 
 import java.util.List;
 

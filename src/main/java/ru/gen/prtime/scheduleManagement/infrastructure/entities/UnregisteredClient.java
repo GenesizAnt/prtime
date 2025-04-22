@@ -5,12 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import org.hibernate.annotations.Comment;
-import ru.gen.prtime.specialistAdministrationWork.infrastructure.entities.SpecialistClientRelation;
-import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.time.LocalDate;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Comment("Незарегистрированные в приложении клиенты, создаются специалистом")
 @Data

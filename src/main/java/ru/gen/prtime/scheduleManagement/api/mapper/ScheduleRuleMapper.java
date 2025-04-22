@@ -5,7 +5,7 @@ import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
 import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleInput;
-import ru.gen.prtime.scheduleManagement.domain.model.ScheduleRule;
+import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 
 @Component
 @RequiredArgsConstructor

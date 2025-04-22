@@ -3,14 +3,14 @@ package ru.gen.prtime.scheduleManagement.api.controllers;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.gen.prtime.scheduleManagement.application.service.TimeSlotManageService;
+import ru.gen.prtime.scheduleManagement.application.usecase.TimeSlotManageUsecase;
 
 @RequiredArgsConstructor
 @RestController
 @RequestMapping("${api.prefix}/calendar")
 public class CalendarManageController {
 
-    private final TimeSlotManageService timeSlotManageService;
+    private final TimeSlotManageUsecase timeSlotManageUsecase;
 
 
 //    @PostMapping

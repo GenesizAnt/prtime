@@ -5,9 +5,8 @@ import lombok.Data;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.CabinetEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.UnregisteredClient;
-import ru.gen.prtime.specialistAdministrationWork.infrastructure.entities.SpecialistClientRelation;
-import ru.gen.prtime.specialistServiceManagement.infrastructure.entities.SpecialistServicesEntity;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistClientRelation;
+import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistServicesEntity;
 
 import java.time.LocalDate;
 import java.util.List;
