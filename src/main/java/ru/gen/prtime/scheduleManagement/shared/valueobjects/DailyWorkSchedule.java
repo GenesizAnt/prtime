@@ -1,9 +1,11 @@
 package ru.gen.prtime.scheduleManagement.shared.valueobjects;
 
+import jakarta.validation.Valid;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 
 import java.time.Duration;
@@ -36,6 +38,22 @@ public class DailyWorkSchedule {
         this.baseDurationAppointment = scheduleRuleEntity.getBaseDurationAppointment();
         this.startLunchTime = scheduleRuleEntity.getStartLunchTime();
         this.endLunchTime = scheduleRuleEntity.getEndLunchTime();
+    }
+
+    public DailyWorkSchedule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
+        validateStartAndEndWorkTime(scheduleRuleRequest.startWorkTime(), scheduleRuleRequest.endWorkTime());
+        validateRestInterval(scheduleRuleRequest.restInterval());
+        validateBaseDurationAppointment(scheduleRuleRequest.baseDurationAppointment());
+        validateStartAndEndLunchTime(scheduleRuleRequest.startLunchTime(), scheduleRuleRequest.endLunchTime());
+        validateLunchTimeWithinWorkTime(scheduleRuleRequest.startWorkTime(), scheduleRuleRequest.endWorkTime(),
+                scheduleRuleRequest.startLunchTime(), scheduleRuleRequest.endLunchTime());
+
+        this.startWorkTime = scheduleRuleRequest.startWorkTime();
+        this.endWorkTime = scheduleRuleRequest.endWorkTime();
+        this.restInterval = scheduleRuleRequest.restInterval();
+        this.baseDurationAppointment = scheduleRuleRequest.baseDurationAppointment();
+        this.startLunchTime = scheduleRuleRequest.startLunchTime();
+        this.endLunchTime = scheduleRuleRequest.endLunchTime();
     }
 
     private void validateStartAndEndWorkTime(LocalTime startWorkTime, LocalTime endWorkTime) {

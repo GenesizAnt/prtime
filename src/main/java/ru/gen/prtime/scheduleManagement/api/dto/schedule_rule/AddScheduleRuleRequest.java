@@ -48,9 +48,9 @@ public record AddScheduleRuleRequest(
         @Size(min = 1, max = 7)
         List<String> dayOfWeekSet,
 
-        @NotNull
-        @Size(min = 1)
-        List<Long> availableServiceList,
+//        @NotNull
+//        @Size(min = 1)
+//        List<Long> availableServiceList,
 
         @NotNull
         @Size(min = 1)

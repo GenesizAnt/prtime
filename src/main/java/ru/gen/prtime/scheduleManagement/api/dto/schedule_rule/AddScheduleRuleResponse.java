@@ -49,7 +49,7 @@ public record AddScheduleRuleResponse(
 
         @NotNull
         @Size(min = 1, max = 7)
-        List<String> dayOfWeekSet,
+        List<String> dayOfWeekSet
 
 //        @NotNull
 //        @Size(min = 1)

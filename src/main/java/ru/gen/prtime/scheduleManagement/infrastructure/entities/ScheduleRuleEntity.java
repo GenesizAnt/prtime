@@ -60,13 +60,13 @@ public class ScheduleRuleEntity {
     @JoinColumn(name = "specialist_id")
     private User specialist;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "schedule_rules_specialist_services",
-            joinColumns = @JoinColumn(name = "schedule_rule_id"),
-            inverseJoinColumns = @JoinColumn(name = "specialist_services_entity_id")
-    )
-    private List<SpecialistServicesEntity> specialistServicesEntities;
+//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinTable(
+//            name = "schedule_rules_specialist_services",
+//            joinColumns = @JoinColumn(name = "schedule_rule_id"),
+//            inverseJoinColumns = @JoinColumn(name = "specialist_services_entity_id")
+//    )
+//    private List<SpecialistServicesEntity> specialistServicesEntities;
 
     @ManyToMany(mappedBy = "scheduleRules", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
     private List<CabinetEntity> cabinetEntityList;

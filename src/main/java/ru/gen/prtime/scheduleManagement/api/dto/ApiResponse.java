@@ -1,13 +1,9 @@
 package ru.gen.prtime.scheduleManagement.api.dto;
 
-import lombok.AllArgsConstructor;
-import lombok.Data;
+public record ApiResponse(
+        String message,
+        Object data
+) {
 
-@Data
-@AllArgsConstructor
-public class ApiResponse {
-
-    private String message;
-    private Object data;
 }
 

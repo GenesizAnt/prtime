@@ -5,6 +5,8 @@ import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleInput;
 import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleOutput;
+import ru.gen.prtime.scheduleManagement.domainCalendarManaged.mapper.ScheduleRuleMapperRepo;
+import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 import ru.gen.prtime.scheduleManagement.infrastructure.adapters.SpecialistServicesAdapter;
 import ru.gen.prtime.scheduleManagement.infrastructure.adapters.UserAdapter;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.CabinetEntity;
@@ -24,12 +26,17 @@ public class ScheduleRuleService {
     private final CabinetEntityRepository cabinetEntityRepository;
     private final UserAdapter userAdapter;
     private final SpecialistServicesAdapter specialistServicesAdapter;
-    private final ScheduleRuleEntityMapper scheduleRuleEntityMapper;
+//    private final ScheduleRuleEntityMapper scheduleRuleEntityMapper;
+    private final ScheduleRuleMapperRepo scheduleRuleMapperRepo;
 
     @Transactional
-    public AddScheduleRuleOutput createNewScheduleRule(AddScheduleRuleInput scheduleRule) {
-        ScheduleRuleEntity scheduleRuleEntity = new ScheduleRuleEntity();
-        scheduleRuleEntity.setSpecialist(userAdapter.getUserById(scheduleRule.specialistId()));
+    public ScheduleRule createNewScheduleRule(ScheduleRule scheduleRule) {
+        ScheduleRuleEntity scheduleRuleEntity = scheduleRuleMapperRepo.mapToORM(scheduleRule);
+
+
+
+//        ScheduleRuleEntity scheduleRuleEntity = new ScheduleRuleEntity();
+        scheduleRuleEntity.setSpecialist(userAdapter.getUserById(scheduleRule.getSpecialistId()));
         scheduleRuleEntity.setIsStatusBase(scheduleRule.isStatusBase());
         scheduleRuleEntity.setStartWorkTime(scheduleRule.startWorkTime());
         scheduleRuleEntity.setEndWorkTime(scheduleRule.endWorkTime());

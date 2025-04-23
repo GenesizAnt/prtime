@@ -1,2 +1,1 @@
 -- Создать таблицу соединения schedule_rules_cabinets
--- Создать таблицу соединения schedule_rules_specialist_services

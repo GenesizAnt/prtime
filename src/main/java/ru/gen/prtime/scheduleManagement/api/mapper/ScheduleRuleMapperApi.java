@@ -4,12 +4,12 @@ import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
 import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
+import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleResponse;
 import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleInput;
-import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 
 @Component
 @RequiredArgsConstructor
-public class ScheduleRuleMapper {
+public class ScheduleRuleMapperApi {
 
     private final ModelMapper modelMapper;
 
@@ -31,7 +31,7 @@ public class ScheduleRuleMapper {
         return modelMapper.map(addScheduleRuleRequest, AddScheduleRuleInput.class);
     }
 
-    public Object toAddScheduleRuleResponse(ScheduleRule newScheduleRule) {
+    public Object toAddScheduleRuleResponse(AddScheduleRuleResponse newScheduleRule) {
         return null;
     }
 

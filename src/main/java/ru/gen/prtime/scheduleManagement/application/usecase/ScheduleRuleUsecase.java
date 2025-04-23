@@ -1,9 +1,12 @@
 package ru.gen.prtime.scheduleManagement.application.usecase;
 
+import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleInput;
-import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleOutput;
+import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
+import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleResponse;
+import ru.gen.prtime.scheduleManagement.application.mapper.ScheduleRuleMapperApp;
+import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 import ru.gen.prtime.scheduleManagement.domainCalendarManaged.service.ScheduleRuleService;
 
 @Service
@@ -11,13 +14,17 @@ import ru.gen.prtime.scheduleManagement.domainCalendarManaged.service.ScheduleRu
 public class ScheduleRuleUsecase {
 
     private final ScheduleRuleService scheduleRuleService;
+//    private final ModelMapper modelMapper;
+    private final ScheduleRuleMapperApp scheduleRuleMapperApp;
 //    private final ScheduleRuleEntityRepository scheduleRuleEntityRepository;
 //    private final UserAdapter userAdapter;
 //    private final SpecialistServicesAdapter specialistServicesAdapter;
 //    private final CabinetRepository cabinetRepository;
 
-    public AddScheduleRuleOutput createNewScheduleRule(AddScheduleRuleInput scheduleRule) {
-        return scheduleRuleService.createNewScheduleRule(scheduleRule);
+    public AddScheduleRuleResponse createNewScheduleRule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
+        ScheduleRule newScheduleRule = new ScheduleRule(scheduleRuleRequest);
+        ScheduleRule saveScheduleRule = scheduleRuleService.createNewScheduleRule(newScheduleRule);
+        return scheduleRuleMapperApp.mapToApi(saveScheduleRule);
 //        ScheduleRuleEntity scheduleRuleEntity = new ScheduleRuleEntity();
 //        scheduleRuleEntity.setSpecialist(userAdapter.getUserById(scheduleRule.specialistId()));
 //        scheduleRuleEntity.setStatusScheduleRule(determineScheduleRule(scheduleRule.isStatusBase()));

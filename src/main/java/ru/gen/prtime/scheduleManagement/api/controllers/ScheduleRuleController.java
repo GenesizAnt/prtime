@@ -12,10 +12,11 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
 import ru.gen.prtime.scheduleManagement.api.dto.ApiResponse;
-import ru.gen.prtime.scheduleManagement.api.mapper.ScheduleRuleMapper;
+import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleResponse;
+import ru.gen.prtime.scheduleManagement.api.mapper.ScheduleRuleMapperApi;
 import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleInput;
+import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleOutput;
 import ru.gen.prtime.scheduleManagement.application.usecase.ScheduleRuleUsecase;
-import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 
 @RequiredArgsConstructor
 @RestController
@@ -23,7 +24,7 @@ import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule
 public class ScheduleRuleController {
 
     private final ScheduleRuleUsecase scheduleRuleUsecase;
-    private final ScheduleRuleMapper scheduleRuleMapper;
+    private final ScheduleRuleMapperApi scheduleRuleMapperApi;
     private final ModelMapper modelMapper;
 
     @PostMapping
@@ -36,11 +37,11 @@ public class ScheduleRuleController {
                 throw new BindException(bindingResult);
             }
         } else {
-            ScheduleRule newScheduleRule = scheduleRuleUsecase.createNewScheduleRule(modelMapper.map(addScheduleRuleRequest, AddScheduleRuleInput.class));
+            AddScheduleRuleResponse newScheduleRule = scheduleRuleUsecase.createNewScheduleRule(addScheduleRuleRequest);
             return ResponseEntity.ok(
                     new ApiResponse(
                             "Добавлен новый шаблон расписания",
-                            scheduleRuleMapper.toAddScheduleRuleResponse(newScheduleRule)));
+                            scheduleRuleMapperApi.toAddScheduleRuleResponse(newScheduleRule)));
         }
     }
 }
