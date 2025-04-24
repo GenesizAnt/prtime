@@ -48,6 +48,6 @@ public class SpecialistServicesEntity {
     @OneToMany(mappedBy = "specialistService", cascade = CascadeType.ALL)
     private List<TimeSlot> appointments;
 
-    @ManyToMany(mappedBy = "specialistServicesEntities", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<ScheduleRuleEntity> scheduleRuleList;
+//    @ManyToMany(mappedBy = "specialistServicesEntities", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    private List<ScheduleRuleEntity> scheduleRuleList;
 }

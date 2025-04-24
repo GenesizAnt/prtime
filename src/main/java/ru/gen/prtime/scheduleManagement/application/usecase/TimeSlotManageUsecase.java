@@ -5,7 +5,7 @@ import org.springframework.stereotype.Service;
 import ru.gen.prtime.scheduleManagement.domainAppointmentManaged.model.Appointment;
 import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.OpenTimeWindow;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
-import ru.gen.prtime.scheduleManagement.domainCalendarManaged.service.TimeSlotService;
+import ru.gen.prtime.scheduleManagement.infrastructure.service.TimeSlotService;
 
 import java.util.NoSuchElementException;
 

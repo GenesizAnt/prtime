@@ -5,14 +5,11 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
-import ru.gen.prtime.scheduleManagement.domainServiceManaged.model.SpecialistServiceModel;
+import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleRequest;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.DailyWorkSchedule;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistServicesEntity;
 
 import java.util.List;
-import java.util.stream.Collectors;
 
 @NoArgsConstructor
 @AllArgsConstructor
@@ -22,7 +19,8 @@ public class ScheduleRule {
 
     private Long scheduleRuleId;
     private Long specialistId;
-    private StatusScheduleRule statusScheduleRule;
+    private String ruleName;
+    private Boolean statusScheduleRule;
     private DailyWorkSchedule dailyWorkSchedule;
     private Integer countDaySet;
     private List<String> weekendDay;
@@ -31,7 +29,7 @@ public class ScheduleRule {
     public ScheduleRule(ScheduleRuleEntity scheduleRuleEntity) {
         this.scheduleRuleId = scheduleRuleEntity.getId();
         this.specialistId = scheduleRuleEntity.getSpecialist().getId();
-        this.statusScheduleRule = scheduleRuleEntity.getIsStatusBase() ? StatusScheduleRule.BASE : StatusScheduleRule.EXTRA;
+        this.statusScheduleRule = scheduleRuleEntity.getIsStatusBase();
         this.dailyWorkSchedule = new DailyWorkSchedule(scheduleRuleEntity);
         this.countDaySet = scheduleRuleEntity.getCountDaySet();
         this.weekendDay = List.of(scheduleRuleEntity.getDayOfWeekSet().split(";"));
@@ -40,7 +38,7 @@ public class ScheduleRule {
 
     public ScheduleRule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
         this.specialistId = scheduleRuleRequest.specialistId();
-        this.statusScheduleRule = scheduleRuleRequest.isStatusBase() ? StatusScheduleRule.BASE : StatusScheduleRule.EXTRA;
+        this.statusScheduleRule = scheduleRuleRequest.statusScheduleRule();
         this.dailyWorkSchedule = new DailyWorkSchedule(scheduleRuleRequest);
         this.countDaySet = scheduleRuleRequest.countDaySet();
         this.weekendDay = scheduleRuleRequest.weekendDay();

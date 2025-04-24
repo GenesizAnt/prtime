@@ -1,1 +1,0 @@
--- Создать таблицу соединения schedule_rules_cabinets

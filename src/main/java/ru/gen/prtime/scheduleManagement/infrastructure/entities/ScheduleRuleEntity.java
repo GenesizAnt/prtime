@@ -23,6 +23,10 @@ public class ScheduleRuleEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Comment("Наименование шаблона")
+    @Column(name = "rule_name")
+    private String ruleName;
+
     @Column(name = "is_status_base")
     Boolean isStatusBase;
 
@@ -68,6 +72,6 @@ public class ScheduleRuleEntity {
 //    )
 //    private List<SpecialistServicesEntity> specialistServicesEntities;
 
-    @ManyToMany(mappedBy = "scheduleRules", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    private List<CabinetEntity> cabinetEntityList;
+//    @ManyToMany(mappedBy = "scheduleRules", cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    private List<CabinetEntity> cabinetEntityList;
 }

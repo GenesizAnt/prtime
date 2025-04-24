@@ -3,9 +3,8 @@ package ru.gen.prtime.scheduleManagement.api.mapper;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
-import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleResponse;
-import ru.gen.prtime.scheduleManagement.application.dto.AddScheduleRuleInput;
+import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleResponse;
+import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 
 @Component
 @RequiredArgsConstructor
@@ -13,25 +12,20 @@ public class ScheduleRuleMapperApi {
 
     private final ModelMapper modelMapper;
 
-    public AddScheduleRuleInput toInputEntity(AddScheduleRuleRequest addScheduleRuleRequest) {
-//        AddScheduleRuleInput addScheduleRuleInput = modelMapper.map(addScheduleRuleRequest, AddScheduleRuleInput.class);
-//        AddScheduleRuleInput scheduleRule = new AddScheduleRuleInput();
-//        scheduleRule.setStatusScheduleRule(determineScheduleRule(addScheduleRuleRequest.isStatusBase()));
-//        scheduleRule.setDailyWorkSchedule(new DailyWorkSchedule(
-//                addScheduleRuleRequest.startWorkTime(),
-//                addScheduleRuleRequest.endWorkTime(),
-//                addScheduleRuleRequest.restInterval(),
-//                addScheduleRuleRequest.baseDurationAppointment(),
-//                addScheduleRuleRequest.startLunchTime(),
-//                addScheduleRuleRequest.endLunchTime()));
-//        scheduleRule.setCountDaySet(addScheduleRuleRequest.countDaySet());
-//        scheduleRule.setWeekendDay(addScheduleRuleRequest.weekendDay());
-//        scheduleRule.setDayOfWeekSet(addScheduleRuleRequest.dayOfWeekSet());
-//        scheduleRule.setAvailableServiceList(addScheduleRuleRequest.availableServiceList());
-        return modelMapper.map(addScheduleRuleRequest, AddScheduleRuleInput.class);
+    public static AddScheduleRuleResponse toScheduleRuleResponse(ScheduleRule scheduleRule) {
+        return new AddScheduleRuleResponse(
+                scheduleRule.getScheduleRuleId(),
+                scheduleRule.getSpecialistId(),
+                scheduleRule.getRuleName(),
+                scheduleRule.getStatusScheduleRule(),
+                scheduleRule.getDailyWorkSchedule(),
+                scheduleRule.getCountDaySet(),
+                scheduleRule.getWeekendDay(),
+                scheduleRule.getDayOfWeekSet()
+        );
     }
 
-    public Object toAddScheduleRuleResponse(AddScheduleRuleResponse newScheduleRule) {
+    public Object toScheduleRuleResponse(AddScheduleRuleResponse newScheduleRule) {
         return null;
     }
 

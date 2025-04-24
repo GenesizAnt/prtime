@@ -38,11 +38,11 @@ public class CabinetEntity {
     @JoinColumn(name = "specialist_id")
     private User specialist;
 
-    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
-    @JoinTable(
-            name = "cabinets_schedule_rules",
-            joinColumns = @JoinColumn(name = "сabinet_specialist_id"),
-            inverseJoinColumns = @JoinColumn(name = "schedule_rule_id")
-    )
-    private List<ScheduleRuleEntity> scheduleRules;
+//    @ManyToMany(cascade = {CascadeType.PERSIST, CascadeType.MERGE})
+//    @JoinTable(
+//            name = "cabinets_schedule_rules",
+//            joinColumns = @JoinColumn(name = "сabinet_specialist_id"),
+//            inverseJoinColumns = @JoinColumn(name = "schedule_rule_id")
+//    )
+//    private List<ScheduleRuleEntity> scheduleRules;
 }

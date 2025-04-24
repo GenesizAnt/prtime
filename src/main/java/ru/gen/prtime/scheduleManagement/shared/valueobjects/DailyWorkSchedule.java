@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
+import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleRequest;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 
 import java.time.Duration;

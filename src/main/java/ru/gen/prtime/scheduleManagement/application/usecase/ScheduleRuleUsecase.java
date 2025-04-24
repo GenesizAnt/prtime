@@ -3,11 +3,13 @@ package ru.gen.prtime.scheduleManagement.application.usecase;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleRequest;
-import ru.gen.prtime.scheduleManagement.api.dto.schedule_rule.AddScheduleRuleResponse;
+import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleRequest;
+import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleResponse;
 import ru.gen.prtime.scheduleManagement.application.mapper.ScheduleRuleMapperApp;
 import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
-import ru.gen.prtime.scheduleManagement.domainCalendarManaged.service.ScheduleRuleService;
+import ru.gen.prtime.scheduleManagement.infrastructure.service.ScheduleRuleService;
+import ru.gen.prtime.scheduleManagement.infrastructure.adapters.UserAdapter;
+import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 @Service
 @RequiredArgsConstructor
@@ -17,14 +19,21 @@ public class ScheduleRuleUsecase {
 //    private final ModelMapper modelMapper;
     private final ScheduleRuleMapperApp scheduleRuleMapperApp;
 //    private final ScheduleRuleEntityRepository scheduleRuleEntityRepository;
-//    private final UserAdapter userAdapter;
+    private final UserAdapter userAdapter;
 //    private final SpecialistServicesAdapter specialistServicesAdapter;
 //    private final CabinetRepository cabinetRepository;
 
-    public AddScheduleRuleResponse createNewScheduleRule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
+    public AddScheduleRuleResponse newScheduleRule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
         ScheduleRule newScheduleRule = new ScheduleRule(scheduleRuleRequest);
-        ScheduleRule saveScheduleRule = scheduleRuleService.createNewScheduleRule(newScheduleRule);
+        User specialist = userAdapter.getUserById(newScheduleRule.getSpecialistId());
+        ScheduleRule saveScheduleRule = scheduleRuleService.newScheduleRule(specialist, newScheduleRule);
         return scheduleRuleMapperApp.mapToApi(saveScheduleRule);
+
+//        ScheduleRule newScheduleRule = new ScheduleRule(scheduleRuleRequest);
+//        ScheduleRule saveScheduleRule = scheduleRuleService.createNewScheduleRule(newScheduleRule);
+//        return scheduleRuleMapperApp.mapToApi(saveScheduleRule);
+
+
 //        ScheduleRuleEntity scheduleRuleEntity = new ScheduleRuleEntity();
 //        scheduleRuleEntity.setSpecialist(userAdapter.getUserById(scheduleRule.specialistId()));
 //        scheduleRuleEntity.setStatusScheduleRule(determineScheduleRule(scheduleRule.isStatusBase()));

@@ -1,4 +1,4 @@
-package ru.gen.prtime.scheduleManagement.domainCalendarManaged.service;
+package ru.gen.prtime.scheduleManagement.infrastructure.service;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
