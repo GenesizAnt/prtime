@@ -1,11 +1,11 @@
-package ru.gen.prtime.scheduleManagement.api.dto.schedulerule;
+package ru.gen.prtime.calendarManaged.api.dto;
 
 import jakarta.validation.constraints.NotNull;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.DailyWorkSchedule;
 
 import java.util.List;
 
-public record AddScheduleRuleResponse(
+public record AddScheduleRuleRequest(
         @NotNull
         Long scheduleRuleId,
         @NotNull
@@ -22,15 +22,14 @@ public record AddScheduleRuleResponse(
         List<String> weekendDay,
         @NotNull
         List<String> dayOfWeekSet
-) {}
-//        @NotNull
-//        Long scheduleRuleId,
-//
 //        @NotNull
 //        Long specialistId,
 //
 //        @NotNull
 //        Boolean isStatusBase,
+//
+//        @NotNull
+//        String ruleName,
 //
 //        @NotNull
 //        LocalTime startWorkTime,
@@ -62,14 +61,15 @@ public record AddScheduleRuleResponse(
 //
 //        @NotNull
 //        @Size(min = 1, max = 7)
-//        List<String> dayOfWeekSet
+//        List<String> dayOfWeekSet,
 
 //        @NotNull
 //        @Size(min = 1)
 //        List<Long> availableServiceList,
-//
+
 //        @NotNull
 //        @Size(min = 1)
 //        List<Long> cabinetList
-//) {
-//}
+) {
+
+}

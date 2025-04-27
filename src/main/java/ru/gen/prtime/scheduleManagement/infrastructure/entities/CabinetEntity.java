@@ -31,8 +31,8 @@ public class CabinetEntity {
     @Column(name = "cabinet_description")
     private String cabinetDescription;
 
-    @OneToMany(mappedBy = "cabinet", cascade = CascadeType.ALL)
-    private List<TimeSlot> timeSlots;
+//    @OneToMany(mappedBy = "cabinet", cascade = CascadeType.ALL)
+//    private List<TimeSlot> timeSlots;
 
     @ManyToOne
     @JoinColumn(name = "specialist_id")

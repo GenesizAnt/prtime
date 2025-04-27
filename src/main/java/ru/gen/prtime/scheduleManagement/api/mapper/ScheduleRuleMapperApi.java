@@ -3,7 +3,7 @@ package ru.gen.prtime.scheduleManagement.api.mapper;
 import lombok.RequiredArgsConstructor;
 import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Component;
-import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleResponse;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleResponse;
 import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 
 @Component

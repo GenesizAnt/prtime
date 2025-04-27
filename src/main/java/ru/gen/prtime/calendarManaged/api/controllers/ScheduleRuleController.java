@@ -1,4 +1,4 @@
-package ru.gen.prtime.scheduleManagement.api.controllers;
+package ru.gen.prtime.calendarManaged.api.controllers;
 
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
@@ -9,11 +9,10 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
-import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleRequest;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleRequest;
 import ru.gen.prtime.scheduleManagement.api.dto.ApiResponse;
-import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleResponse;
-import ru.gen.prtime.scheduleManagement.api.mapper.ScheduleRuleMapperApi;
-import ru.gen.prtime.scheduleManagement.application.usecase.ScheduleRuleUsecase;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleResponse;
+import ru.gen.prtime.calendarManaged.application.services.ScheduleRuleUsecase;
 
 @RequiredArgsConstructor
 @RestController
@@ -21,7 +20,7 @@ import ru.gen.prtime.scheduleManagement.application.usecase.ScheduleRuleUsecase;
 public class ScheduleRuleController {
 
     private final ScheduleRuleUsecase scheduleRuleUsecase;
-    private final ScheduleRuleMapperApi scheduleRuleMapperApi;
+//    private final ScheduleRuleMapperApi scheduleRuleMapperApi;
 //    private final ModelMapper modelMapper;
 
     @PostMapping
@@ -35,10 +34,7 @@ public class ScheduleRuleController {
             }
         } else {
             AddScheduleRuleResponse newScheduleRule = scheduleRuleUsecase.newScheduleRule(addScheduleRuleRequest);
-            return ResponseEntity.ok(
-                    new ApiResponse(
-                            "Добавлен новый шаблон расписания",
-                            scheduleRuleMapperApi.toScheduleRuleResponse(newScheduleRule)));
+            return ResponseEntity.ok(new ApiResponse("Добавлен новый шаблон расписания", newScheduleRule));
         }
     }
 }

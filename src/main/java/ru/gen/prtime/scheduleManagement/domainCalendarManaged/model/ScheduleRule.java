@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleRequest;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleRequest;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.DailyWorkSchedule;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 
@@ -29,6 +29,7 @@ public class ScheduleRule {
     public ScheduleRule(ScheduleRuleEntity scheduleRuleEntity) {
         this.scheduleRuleId = scheduleRuleEntity.getId();
         this.specialistId = scheduleRuleEntity.getSpecialist().getId();
+        this.ruleName = scheduleRuleEntity.getRuleName();
         this.statusScheduleRule = scheduleRuleEntity.getIsStatusBase();
         this.dailyWorkSchedule = new DailyWorkSchedule(scheduleRuleEntity);
         this.countDaySet = scheduleRuleEntity.getCountDaySet();
@@ -39,6 +40,7 @@ public class ScheduleRule {
     public ScheduleRule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
         this.specialistId = scheduleRuleRequest.specialistId();
         this.statusScheduleRule = scheduleRuleRequest.statusScheduleRule();
+        this.ruleName = scheduleRuleRequest.ruleName();
         this.dailyWorkSchedule = new DailyWorkSchedule(scheduleRuleRequest);
         this.countDaySet = scheduleRuleRequest.countDaySet();
         this.weekendDay = scheduleRuleRequest.weekendDay();

@@ -9,11 +9,9 @@ import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEnti
 import ru.gen.prtime.scheduleManagement.infrastructure.repositories.ScheduleRuleEntityRepository;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
-import java.util.stream.Collectors;
-
 @Service
 @RequiredArgsConstructor
-public class ScheduleRuleService {
+public class ScheduleRuleServicesdcsdc {
 
     private final ScheduleRuleEntityRepository scheduleRuleEntityRepository;
 //    private final UserAdapter userAdapter;

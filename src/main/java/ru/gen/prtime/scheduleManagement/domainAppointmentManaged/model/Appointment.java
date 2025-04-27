@@ -23,7 +23,7 @@ public class Appointment {
     private LocalDateTime lockedAt;
     private Long clientId;
     private Long specialistId;
-    private Cabinet cabinet;
+//    private Cabinet cabinet;
     private SpecialistServiceModel specialistService;
     private Boolean isPrimaryVisit;
 
@@ -35,7 +35,7 @@ public class Appointment {
         this.lockedAt = timeSlot.getLockedAt();
         this.clientId = timeSlot.getClient().getId();
         this.specialistId = timeSlot.getSpecialist().getId();
-        this.cabinet = new Cabinet(timeSlot.getCabinet());
+//        this.cabinet = new Cabinet(timeSlot.getCabinet());
         this.specialistService = new SpecialistServiceModel(timeSlot.getSpecialistService());
         this.isPrimaryVisit = timeSlot.getIsPrimaryVisit();
     }

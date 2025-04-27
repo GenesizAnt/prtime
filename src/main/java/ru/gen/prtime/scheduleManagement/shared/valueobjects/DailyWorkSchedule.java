@@ -5,7 +5,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.api.dto.schedulerule.AddScheduleRuleRequest;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleRequest;
 import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
 
 import java.time.Duration;
@@ -41,19 +41,19 @@ public class DailyWorkSchedule {
     }
 
     public DailyWorkSchedule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
-        validateStartAndEndWorkTime(scheduleRuleRequest.startWorkTime(), scheduleRuleRequest.endWorkTime());
-        validateRestInterval(scheduleRuleRequest.restInterval());
-        validateBaseDurationAppointment(scheduleRuleRequest.baseDurationAppointment());
-        validateStartAndEndLunchTime(scheduleRuleRequest.startLunchTime(), scheduleRuleRequest.endLunchTime());
-        validateLunchTimeWithinWorkTime(scheduleRuleRequest.startWorkTime(), scheduleRuleRequest.endWorkTime(),
-                scheduleRuleRequest.startLunchTime(), scheduleRuleRequest.endLunchTime());
+        validateStartAndEndWorkTime(scheduleRuleRequest.dailyWorkSchedule().getStartWorkTime(), scheduleRuleRequest.dailyWorkSchedule().getEndWorkTime());
+        validateRestInterval(scheduleRuleRequest.dailyWorkSchedule().getRestInterval());
+        validateBaseDurationAppointment(scheduleRuleRequest.dailyWorkSchedule().getBaseDurationAppointment());
+        validateStartAndEndLunchTime(scheduleRuleRequest.dailyWorkSchedule().getStartLunchTime(), scheduleRuleRequest.dailyWorkSchedule().getEndWorkTime());
+        validateLunchTimeWithinWorkTime(scheduleRuleRequest.dailyWorkSchedule().getStartWorkTime(), scheduleRuleRequest.dailyWorkSchedule().getEndWorkTime(),
+                scheduleRuleRequest.dailyWorkSchedule().getStartWorkTime(), scheduleRuleRequest.dailyWorkSchedule().getEndLunchTime());
 
-        this.startWorkTime = scheduleRuleRequest.startWorkTime();
-        this.endWorkTime = scheduleRuleRequest.endWorkTime();
-        this.restInterval = scheduleRuleRequest.restInterval();
-        this.baseDurationAppointment = scheduleRuleRequest.baseDurationAppointment();
-        this.startLunchTime = scheduleRuleRequest.startLunchTime();
-        this.endLunchTime = scheduleRuleRequest.endLunchTime();
+        this.startWorkTime = scheduleRuleRequest.dailyWorkSchedule().getStartWorkTime();
+        this.endWorkTime = scheduleRuleRequest.dailyWorkSchedule().getEndWorkTime();
+        this.restInterval = scheduleRuleRequest.dailyWorkSchedule().getRestInterval();
+        this.baseDurationAppointment = scheduleRuleRequest.dailyWorkSchedule().getBaseDurationAppointment();
+        this.startLunchTime = scheduleRuleRequest.dailyWorkSchedule().getStartLunchTime();
+        this.endLunchTime = scheduleRuleRequest.dailyWorkSchedule().getEndLunchTime();
     }
 
     private void validateStartAndEndWorkTime(LocalTime startWorkTime, LocalTime endWorkTime) {
