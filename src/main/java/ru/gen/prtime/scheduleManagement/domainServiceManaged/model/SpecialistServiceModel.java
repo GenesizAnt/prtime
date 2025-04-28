@@ -4,7 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistServicesEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.SpecialistServicesEntity;
 
 import java.math.BigDecimal;
 

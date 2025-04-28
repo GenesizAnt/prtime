@@ -3,15 +3,8 @@ package ru.gen.prtime.calendarManaged.api.controllers;
 import jakarta.validation.Valid;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
-import org.springframework.validation.BindException;
-import org.springframework.validation.BindingResult;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
-import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleRequest;
-import ru.gen.prtime.scheduleManagement.api.dto.ApiResponse;
-import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleResponse;
+import org.springframework.web.bind.annotation.*;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleDto;
 import ru.gen.prtime.calendarManaged.application.services.ScheduleRuleUsecase;
 
 @RequiredArgsConstructor
@@ -20,21 +13,68 @@ import ru.gen.prtime.calendarManaged.application.services.ScheduleRuleUsecase;
 public class ScheduleRuleController {
 
     private final ScheduleRuleUsecase scheduleRuleUsecase;
-//    private final ScheduleRuleMapperApi scheduleRuleMapperApi;
-//    private final ModelMapper modelMapper;
 
-    @PostMapping
-    public ResponseEntity<?> createNewScheduleRule(@Valid @RequestBody AddScheduleRuleRequest addScheduleRuleRequest,
-                                                         BindingResult bindingResult) throws BindException {
-        if (bindingResult.hasErrors()) {
-            if (bindingResult instanceof BindException exception) {
-                throw exception;
-            } else {
-                throw new BindException(bindingResult);
-            }
-        } else {
-            AddScheduleRuleResponse newScheduleRule = scheduleRuleUsecase.newScheduleRule(addScheduleRuleRequest);
-            return ResponseEntity.ok(new ApiResponse("Добавлен новый шаблон расписания", newScheduleRule));
+    @PostMapping("/create")
+    public ResponseEntity<AddScheduleRuleDto> createNewScheduleRule(@Valid @RequestBody AddScheduleRuleDto addScheduleRuleDto) {
+        AddScheduleRuleDto newScheduleRule = scheduleRuleUsecase.newScheduleRule(addScheduleRuleDto);
+        return ResponseEntity.ok(newScheduleRule);
+    }
+
+    @DeleteMapping("/delete")
+    public ResponseEntity<Void> removeScheduleRule(@RequestBody Long idScheduleRule) {
+        scheduleRuleUsecase.deleteScheduleRule(idScheduleRule);
+        return ResponseEntity.ok(null);
+    }
+
+    @PatchMapping
+}
+
+/*
+@RestController
+@RequestMapping("/api/schedule-rules")
+@RequiredArgsConstructor
+public class ScheduleRuleController {
+
+    private final ScheduleRuleService scheduleRuleService;
+
+    @PatchMapping("/{id}")
+    @Operation(summary = "Частичное обновление правил расписания")
+    public ResponseEntity<ScheduleRule> updateScheduleRule(
+            @PathVariable Long id,
+            @RequestBody ScheduleRuleUpdateDto updateDto) {
+
+        ScheduleRule updatedRule = scheduleRuleService.partialUpdate(id, updateDto);
+        return ResponseEntity.ok(updatedRule);
+    }
+}
+ */
+
+/*
+@Service
+@RequiredArgsConstructor
+public class ScheduleRuleService {
+
+    private final ScheduleRuleRepository scheduleRuleRepository;
+
+    @Transactional
+    public ScheduleRule partialUpdate(Long id, ScheduleRuleUpdateDto updateDto) {
+        ScheduleRule existingRule = scheduleRuleRepository.findById(id)
+                .orElseThrow(() -> new EntityNotFoundException("ScheduleRule not found with id: " + id));
+
+        updateIfNotNull(updateDto.getStartWorkTime(), existingRule::setStartWorkTime);
+        updateIfNotNull(updateDto.getEndWorkTime(), existingRule::setEndWorkTime);
+        updateIfNotNull(updateDto.getRestInterval(), existingRule::setRestInterval);
+        updateIfNotNull(updateDto.getBaseDurationAppointment(), existingRule::setBaseDurationAppointment);
+        updateIfNotNull(updateDto.getStartLunchTime(), existingRule::setStartLunchTime);
+        updateIfNotNull(updateDto.getEndLunchTime(), existingRule::setEndLunchTime);
+
+        return scheduleRuleRepository.save(existingRule);
+    }
+
+    private <T> void updateIfNotNull(T newValue, Consumer<T> setter) {
+        if (newValue != null) {
+            setter.accept(newValue);
         }
     }
 }
+ */

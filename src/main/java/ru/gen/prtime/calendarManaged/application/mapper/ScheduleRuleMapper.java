@@ -2,9 +2,8 @@ package ru.gen.prtime.calendarManaged.application.mapper;
 
 import jakarta.validation.Valid;
 import org.springframework.stereotype.Component;
-import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleRequest;
-import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleResponse;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleDto;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.ScheduleRuleEntity;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.DailyWorkSchedule;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
@@ -12,28 +11,25 @@ import java.util.List;
 
 @Component
 public class ScheduleRuleMapper {
-//    public AddScheduleRuleResponse mapToApi(ScheduleRule saveScheduleRule) {
-//        return null;
-//    }
 
-    public ScheduleRuleEntity mapToEntity(@Valid AddScheduleRuleRequest scheduleRuleRequest, User specialist) {
+    public ScheduleRuleEntity mapToEntity(@Valid AddScheduleRuleDto scheduleRule, User specialist) {
         ScheduleRuleEntity scheduleRuleEntity = new ScheduleRuleEntity();
         scheduleRuleEntity.setSpecialist(specialist);
-        scheduleRuleEntity.setIsStatusBase(scheduleRuleRequest.statusScheduleRule());
-        scheduleRuleEntity.setStartWorkTime(scheduleRuleRequest.dailyWorkSchedule().getStartWorkTime());
-        scheduleRuleEntity.setEndWorkTime(scheduleRuleRequest.dailyWorkSchedule().getEndWorkTime());
-        scheduleRuleEntity.setCountDaySet(scheduleRuleRequest.countDaySet());
-        scheduleRuleEntity.setRestInterval(scheduleRuleRequest.dailyWorkSchedule().getRestInterval());
-        scheduleRuleEntity.setBaseDurationAppointment(scheduleRuleRequest.dailyWorkSchedule().getBaseDurationAppointment());
-        scheduleRuleEntity.setStartLunchTime(scheduleRuleRequest.dailyWorkSchedule().getStartLunchTime());
-        scheduleRuleEntity.setEndLunchTime(scheduleRuleRequest.dailyWorkSchedule().getEndLunchTime());
-        scheduleRuleEntity.setWeekendDay(String.join(";", scheduleRuleRequest.weekendDay()));
-        scheduleRuleEntity.setDayOfWeekSet(String.join(";", scheduleRuleRequest.dayOfWeekSet()));
+        scheduleRuleEntity.setIsStatusBase(scheduleRule.isStatusBase());
+        scheduleRuleEntity.setStartWorkTime(scheduleRule.dailyWorkSchedule().getStartWorkTime());
+        scheduleRuleEntity.setEndWorkTime(scheduleRule.dailyWorkSchedule().getEndWorkTime());
+        scheduleRuleEntity.setCountDaySet(scheduleRule.countDaySet());
+        scheduleRuleEntity.setRestInterval(scheduleRule.dailyWorkSchedule().getRestInterval());
+        scheduleRuleEntity.setBaseDurationAppointment(scheduleRule.dailyWorkSchedule().getBaseDurationAppointment());
+        scheduleRuleEntity.setStartLunchTime(scheduleRule.dailyWorkSchedule().getStartLunchTime());
+        scheduleRuleEntity.setEndLunchTime(scheduleRule.dailyWorkSchedule().getEndLunchTime());
+        scheduleRuleEntity.setWeekendDay(String.join(";", scheduleRule.weekendDay()));
+        scheduleRuleEntity.setDayOfWeekSet(String.join(";", scheduleRule.dayOfWeekSet()));
         return null;
     }
 
-    public AddScheduleRuleResponse mapToApi(ScheduleRuleEntity newScheduleRule) {
-        return new AddScheduleRuleResponse(
+    public AddScheduleRuleDto mapToApi(ScheduleRuleEntity newScheduleRule) {
+        return new AddScheduleRuleDto(
                 newScheduleRule.getId(),
                 newScheduleRule.getSpecialist().getId(),
                 newScheduleRule.getRuleName(),

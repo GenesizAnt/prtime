@@ -7,10 +7,10 @@ import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.CalendarSpecialist;
 import ru.gen.prtime.scheduleManagement.domainServiceManaged.model.SpecialistServiceModel;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.CabinetEntity;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistClientRelation;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistServicesEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.CabinetEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.ScheduleRuleEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.SpecialistClientRelation;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.SpecialistServicesEntity;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.PersonFullName;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 

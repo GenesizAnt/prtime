@@ -6,7 +6,7 @@ import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.domainAppointmentManaged.model.Appointment;
 import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.OpenTimeWindow;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.TimeSlot;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
 
 import java.util.List;

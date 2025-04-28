@@ -5,8 +5,8 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleRequest;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleDto;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.ScheduleRuleEntity;
 
 import java.time.Duration;
 import java.time.LocalTime;
@@ -40,7 +40,7 @@ public class DailyWorkSchedule {
         this.endLunchTime = scheduleRuleEntity.getEndLunchTime();
     }
 
-    public DailyWorkSchedule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
+    public DailyWorkSchedule(@Valid AddScheduleRuleDto scheduleRuleRequest) {
         validateStartAndEndWorkTime(scheduleRuleRequest.dailyWorkSchedule().getStartWorkTime(), scheduleRuleRequest.dailyWorkSchedule().getEndWorkTime());
         validateRestInterval(scheduleRuleRequest.dailyWorkSchedule().getRestInterval());
         validateBaseDurationAppointment(scheduleRuleRequest.dailyWorkSchedule().getBaseDurationAppointment());

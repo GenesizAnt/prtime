@@ -1,4 +1,4 @@
-package ru.gen.prtime.scheduleManagement.infrastructure.entities;
+package ru.gen.prtime.calendarManaged.infrastructure.entities;
 
 import jakarta.persistence.*;
 import lombok.AllArgsConstructor;

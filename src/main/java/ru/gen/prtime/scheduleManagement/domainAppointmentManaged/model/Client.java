@@ -7,7 +7,7 @@ import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.Email;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.PersonFullName;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.PhoneNumber;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistClientRelation;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.SpecialistClientRelation;
 
 import java.time.LocalDate;
 

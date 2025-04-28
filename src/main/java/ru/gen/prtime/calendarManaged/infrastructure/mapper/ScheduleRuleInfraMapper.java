@@ -1,12 +1,9 @@
-package ru.gen.prtime.scheduleManagement.infrastructure.mapper;
+package ru.gen.prtime.calendarManaged.infrastructure.mapper;
 
 import org.springframework.stereotype.Component;
 import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.ScheduleRule;
-import ru.gen.prtime.scheduleManagement.domainCalendarManaged.model.StatusScheduleRule;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.ScheduleRuleEntity;
 import ru.gen.prtime.userAccessManagement.security.entities.User;
-
-import java.util.stream.Collectors;
 
 @Component
 public class ScheduleRuleInfraMapper {

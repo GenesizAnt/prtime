@@ -3,7 +3,7 @@ package ru.gen.prtime.scheduleManagement.application.usecase;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 import ru.gen.prtime.scheduleManagement.domainAppointmentManaged.model.Specialist;
-import ru.gen.prtime.scheduleManagement.infrastructure.adapters.UserAdapter;
+import ru.gen.prtime.calendarManaged.infrastructure.adapters.UserAdapter;
 
 @Service
 @RequiredArgsConstructor

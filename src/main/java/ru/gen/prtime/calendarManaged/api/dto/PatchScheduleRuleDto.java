@@ -1,26 +1,17 @@
 package ru.gen.prtime.calendarManaged.api.dto;
 
-import jakarta.validation.constraints.NotNull;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.DailyWorkSchedule;
 
 import java.util.List;
 
-public record AddScheduleRuleResponse(
-        @NotNull
+public record PatchScheduleRuleDto(
         Long scheduleRuleId,
-        @NotNull
         Long specialistId,
-        @NotNull
         String ruleName,
-        @NotNull
-        Boolean statusScheduleRule,
-        @NotNull
+        Boolean isStatusBase,
         DailyWorkSchedule dailyWorkSchedule,
-        @NotNull
         Integer countDaySet,
-        @NotNull
         List<String> weekendDay,
-        @NotNull
         List<String> dayOfWeekSet
 ) {}
 //        @NotNull

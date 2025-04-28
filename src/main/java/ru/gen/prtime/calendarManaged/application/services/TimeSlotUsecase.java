@@ -1,15 +1,15 @@
-package ru.gen.prtime.scheduleManagement.infrastructure.service;
+package ru.gen.prtime.calendarManaged.application.services;
 
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
-import ru.gen.prtime.scheduleManagement.infrastructure.repositories.TimeSlotRepository;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.TimeSlot;
+import ru.gen.prtime.calendarManaged.infrastructure.repositories.TimeSlotRepository;
 
 import java.util.Optional;
 
 @Service
 @RequiredArgsConstructor
-public class TimeSlotService {
+public class TimeSlotUsecase {
 
     private final TimeSlotRepository timeSlotRepository;
 

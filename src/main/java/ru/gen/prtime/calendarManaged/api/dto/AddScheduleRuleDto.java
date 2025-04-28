@@ -5,7 +5,8 @@ import ru.gen.prtime.scheduleManagement.shared.valueobjects.DailyWorkSchedule;
 
 import java.util.List;
 
-public record AddScheduleRuleRequest(
+public record AddScheduleRuleDto(
+        //ToDo написать ВСЮ возможную валидацию в формате     @NotNull(message = "Поле 'scheduleRuleId' обязательное")
         @NotNull
         Long scheduleRuleId,
         @NotNull
@@ -13,7 +14,7 @@ public record AddScheduleRuleRequest(
         @NotNull
         String ruleName,
         @NotNull
-        Boolean statusScheduleRule,
+        Boolean isStatusBase,
         @NotNull
         DailyWorkSchedule dailyWorkSchedule,
         @NotNull

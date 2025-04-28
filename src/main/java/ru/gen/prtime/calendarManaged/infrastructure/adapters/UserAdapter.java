@@ -1,4 +1,4 @@
-package ru.gen.prtime.scheduleManagement.infrastructure.adapters;
+package ru.gen.prtime.calendarManaged.infrastructure.adapters;
 
 import jakarta.validation.constraints.NotNull;
 import lombok.RequiredArgsConstructor;

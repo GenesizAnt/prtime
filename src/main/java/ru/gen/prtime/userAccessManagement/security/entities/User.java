@@ -2,11 +2,11 @@ package ru.gen.prtime.userAccessManagement.security.entities;
 
 import jakarta.persistence.*;
 import lombok.Data;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.CabinetEntity;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistClientRelation;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.SpecialistServicesEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.CabinetEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.ScheduleRuleEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.TimeSlot;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.SpecialistClientRelation;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.SpecialistServicesEntity;
 
 import java.time.LocalDate;
 import java.util.List;

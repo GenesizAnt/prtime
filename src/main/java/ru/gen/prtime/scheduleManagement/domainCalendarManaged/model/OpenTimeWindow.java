@@ -5,7 +5,7 @@ import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.DateTimeParameters;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.TimeSlot;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.TimeSlot;
 
 import java.time.LocalDateTime;
 

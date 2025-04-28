@@ -5,9 +5,9 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
-import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleRequest;
+import ru.gen.prtime.calendarManaged.api.dto.AddScheduleRuleDto;
 import ru.gen.prtime.scheduleManagement.shared.valueobjects.DailyWorkSchedule;
-import ru.gen.prtime.scheduleManagement.infrastructure.entities.ScheduleRuleEntity;
+import ru.gen.prtime.calendarManaged.infrastructure.entities.ScheduleRuleEntity;
 
 import java.util.List;
 
@@ -17,6 +17,7 @@ import java.util.List;
 @Setter
 public class ScheduleRule {
 
+    //ToDo каждая модель должна состоять только из VO и содержать проверку на IllegalArgumentException
     private Long scheduleRuleId;
     private Long specialistId;
     private String ruleName;
@@ -37,9 +38,9 @@ public class ScheduleRule {
         this.dayOfWeekSet = List.of(scheduleRuleEntity.getDayOfWeekSet().split(";"));
     }
 
-    public ScheduleRule(@Valid AddScheduleRuleRequest scheduleRuleRequest) {
+    public ScheduleRule(@Valid AddScheduleRuleDto scheduleRuleRequest) {
         this.specialistId = scheduleRuleRequest.specialistId();
-        this.statusScheduleRule = scheduleRuleRequest.statusScheduleRule();
+        this.statusScheduleRule = scheduleRuleRequest.isStatusBase();
         this.ruleName = scheduleRuleRequest.ruleName();
         this.dailyWorkSchedule = new DailyWorkSchedule(scheduleRuleRequest);
         this.countDaySet = scheduleRuleRequest.countDaySet();
